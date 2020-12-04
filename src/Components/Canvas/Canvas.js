@@ -1,43 +1,50 @@
 import React, { useRef, useEffect, useState } from "react";
 
+import Pencil from "./BrushesFunctions/Pencil";
+import Eraser from "./BrushesFunctions/Eraser";
+
 import "./style.css";
 
-export default function Canvas(props) {
+export default function Canvas({ width, height, brush, color }) {
 
 	const canvasRef = useRef(null);
-
-	// const color = "#000000";
 	const [ctx, setCtx] = useState(null);
-	const [mouseDown, setMouseDown] = useState(false);
-
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		setCtx(canvas.getContext("2d"));
 	}, []);
 
-	function draw(position) {
-		const { x, y } = position;
-		console.log();
-		ctx.fillStyle = "#000000";
-		ctx.beginPath(ctx);
-		// ctx.arc(50, 100, 20, 0, 2 * Math.PI);
-		ctx.rect(x, y, 10, 10);
-		ctx.fill();
-	};
+	const [mouseDown, setMouseDown] = useState(false);
+
+
+	const [size, setSize] = useState(10);
+	const [square, setSquare] = useState(true);
+	const [details, setDetails] = useState({ brush, color, size, square });
+
+	useEffect(() => {
+		setDetails({ brush, color, size, square });
+	}, [brush, color, size, square]);
 
 	//Get Mouse Position
 	function getMousePos(evt) {
 		const rect = canvasRef.current.getBoundingClientRect();
 		const position = { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
-		draw(position);
+		Brush(position);
+	}
+
+	function Brush(position) {
+		if (details.brush === "Pencil") Pencil(ctx, position, details);
+		else if (details.brush === "Eraser") Eraser(ctx, position, details);
 	}
 
 	return (
 		<canvas
-			{...props}
+			width={width}
+			height={height}
 			ref={canvasRef}
 			onMouseDown={() => setMouseDown(true)}
 			onMouseUp={() => setMouseDown(false)}
+			onMouseOut={() => setMouseDown(false)}
 			onMouseMove={(evt) => mouseDown && getMousePos(evt)}
 		/>
 	)

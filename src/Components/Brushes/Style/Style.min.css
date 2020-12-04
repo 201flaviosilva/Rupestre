@@ -1,0 +1,1 @@
+aside.BrushesContainer{position:absolute;top:0;left:0;border:1px solid black}aside.BrushesContainer ul{display:grid;grid-template-columns:repeat(3, 1fr);padding:5px;gap:5px}aside.BrushesContainer ul li button img{width:24px;height:24px}
