@@ -5,8 +5,9 @@ import Eraser from "./BrushesFunctions/Eraser";
 
 import "./style.css";
 
-export default function Canvas({ width, height, brush, color }) {
+export default function Canvas({ canvasSize, canvasInfo }) {
 
+	// console.log(canvasInfo);
 	const canvasRef = useRef(null);
 	const [ctx, setCtx] = useState(null);
 	useEffect(() => {
@@ -16,15 +17,6 @@ export default function Canvas({ width, height, brush, color }) {
 
 	const [mouseDown, setMouseDown] = useState(false);
 
-
-	const [size, setSize] = useState(10);
-	const [square, setSquare] = useState(true);
-	const [details, setDetails] = useState({ brush, color, size, square });
-
-	useEffect(() => {
-		setDetails({ brush, color, size, square });
-	}, [brush, color, size, square]);
-
 	//Get Mouse Position
 	function getMousePos(evt) {
 		const rect = canvasRef.current.getBoundingClientRect();
@@ -33,14 +25,23 @@ export default function Canvas({ width, height, brush, color }) {
 	}
 
 	function Brush(position) {
-		if (details.brush === "Pencil") Pencil(ctx, position, details);
-		else if (details.brush === "Eraser") Eraser(ctx, position, details);
+		console.log(canvasInfo);
+		switch (canvasInfo.brush) {
+			case "Pencil":
+				Pencil(ctx, position, canvasInfo);
+				break;
+			case "Eraser":
+				Eraser(ctx, position, canvasInfo);
+				break;
+			default:
+				break;
+		}
 	}
 
 	return (
 		<canvas
-			width={width}
-			height={height}
+			width={canvasSize.width}
+			height={canvasSize.height}
 			ref={canvasRef}
 			onMouseDown={() => setMouseDown(true)}
 			onMouseUp={() => setMouseDown(false)}

@@ -6,7 +6,7 @@ export default function Eraser(ctx, position, details) {
 
 	ctx.globalCompositeOperation = "destination-out";
 	if (square) ctx.rect(x, y, size, size);
-	else ctx.arc(x, y, size, 0, 2 * Math.PI);
+	else ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
 
 	ctx.fill();
 };
