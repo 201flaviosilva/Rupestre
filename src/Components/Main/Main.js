@@ -8,6 +8,10 @@ export default function Main() {
 	const [canvasWidth, setCanvasWidth] = useState(500); // Defenir ao criar uma nova folha
 	const [canvasHeight, setCanvasHeight] = useState(500); // Defenir ao criar uma nova folha
 	const [canvasSize, setCanvasSize] = useState({ width: canvasWidth, height: canvasHeight });
+	useEffect(() => {
+		setCanvasWidth(500);
+		setCanvasHeight(500);
+	}, [canvasWidth, canvasHeight]);
 
 
 	const [brush, setBrush] = useState("Pencil");
@@ -17,7 +21,7 @@ export default function Main() {
 	const [canvasInfo, setCanvasInfo] = useState({ brush: brush, color: color, size: size, square: square });
 
 	useEffect(() => {
-		setCanvasInfo({ width: canvasWidth, height: canvasHeight });
+		setCanvasSize({ width: canvasWidth, height: canvasHeight });
 	}, [canvasWidth, canvasHeight]);
 
 	useEffect(() => {
