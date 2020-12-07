@@ -17,15 +17,37 @@ export default function Canvas({ canvasSize, canvasInfo }) {
 
 	const [mouseDown, setMouseDown] = useState(false);
 
+	const [lastPositionX, setLastPositionX] = useState(null);
+	const [lastPositionY, setLastPositionY] = useState(null);
+	const [positionX, setPositionX] = useState(null);
+	const [positionY, setPositionY] = useState(null);
+
 	//Get Mouse Position
 	function getMousePos(evt) {
 		const rect = canvasRef.current.getBoundingClientRect();
-		const position = { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
-		Brush(position);
+		setLastPositionX(positionX);
+		setLastPositionY(positionY);
+		setPositionX(evt.clientX - rect.left);
+		setPositionY(evt.clientY - rect.top);
 	}
 
+	useEffect(() => {
+		if (positionX && positionY) {
+			const position = {
+				last: {
+					x: lastPositionX,
+					y: lastPositionY,
+				},
+				actual: {
+					x: positionX,
+					y: positionY
+				}
+			};
+			Brush(position);
+		}
+	}, [positionX, positionY]);
+
 	function Brush(position) {
-		console.log(canvasInfo);
 		switch (canvasInfo.brush) {
 			case "Pencil":
 				Pencil(ctx, position, canvasInfo);
@@ -38,14 +60,22 @@ export default function Canvas({ canvasSize, canvasInfo }) {
 		}
 	}
 
+	function leaveCanvas() {
+		setMouseDown(false);
+		setLastPositionX(null);
+		setLastPositionY(null);
+		setPositionX(null);
+		setPositionY(null);
+	}
+
 	return (
 		<canvas
 			width={canvasSize.width}
 			height={canvasSize.height}
 			ref={canvasRef}
 			onMouseDown={() => setMouseDown(true)}
-			onMouseUp={() => setMouseDown(false)}
-			onMouseOut={() => setMouseDown(false)}
+			onMouseUp={leaveCanvas}
+			onMouseOut={leaveCanvas}
 			onMouseMove={(evt) => mouseDown && getMousePos(evt)}
 		/>
 	)
