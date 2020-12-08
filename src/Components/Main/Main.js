@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
+import InitialConfig from "../InitialConfig/InitialConfig";
 import Brushes from "../Brushes/Brushes";
 import Canvas from "../Canvas/Canvas";
 
 import "./Style.css";
 
 export default function Main() {
-	const [canvasWidth, setCanvasWidth] = useState(500); // Defenir ao criar uma nova folha
-	const [canvasHeight, setCanvasHeight] = useState(500); // Defenir ao criar uma nova folha
-	const [canvasSize, setCanvasSize] = useState({ width: canvasWidth, height: canvasHeight });
-	useEffect(() => {
-		setCanvasWidth(500);
-		setCanvasHeight(500);
-	}, [canvasWidth, canvasHeight]);
-
+	const [canvasSize, setCanvasSize] = useState({ width: 500, height: 500 });
 
 	const [brush, setBrush] = useState("Pencil");
 	const [color, setColor] = useState("#0000ff");
@@ -21,15 +15,13 @@ export default function Main() {
 	const [canvasInfo, setCanvasInfo] = useState({ brush: brush, color: color, size: size, square: square });
 
 	useEffect(() => {
-		setCanvasSize({ width: canvasWidth, height: canvasHeight });
-	}, [canvasWidth, canvasHeight]);
-
-	useEffect(() => {
 		setCanvasInfo({ brush: brush, color: color, size: size, square: square });
 	}, [brush, color, size, square]);
 
 	return (
 		<main>
+			<InitialConfig setCanvasSize={setCanvasSize} />
+
 			<Brushes setBrush={setBrush} />
 
 			<Canvas
@@ -37,7 +29,7 @@ export default function Main() {
 				canvasInfo={canvasInfo}
 			/>
 
-			<p>{canvasWidth} x {canvasHeight}</p>
+			<p>{canvasSize.width} x {canvasSize.height}</p>
 
 			<div>
 				<h2>Tool Options</h2>

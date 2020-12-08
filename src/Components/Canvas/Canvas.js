@@ -45,7 +45,6 @@ export default function Canvas({ canvasSize, canvasInfo }) {
 			};
 			Brush(position);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [positionX, positionY]);
 
 	function Brush(position) {
