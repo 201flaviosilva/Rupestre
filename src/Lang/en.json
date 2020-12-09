@@ -1,1 +1,8 @@
-{}
+{
+  "InitialConfig": {
+    "Title": "Initial Configurations",
+    "WidthInput": "Width",
+    "HeightInput": "Height",
+    "Confirm": "Confirm"
+  }
+}

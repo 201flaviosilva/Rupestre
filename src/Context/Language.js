@@ -13,7 +13,6 @@ export default function LanguageProvider({ children }) {
 
 	useEffect(() => {
 		localStorage.setItem("lang", language);
-		console.log(localStorage.getItem("lang"));
 	}, [language]);
 
 	return (

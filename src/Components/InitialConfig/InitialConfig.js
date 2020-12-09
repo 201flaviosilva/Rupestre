@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import lang from "../../Lang/Lang";
+
 import { useLang } from "../../Context/Language";
 
 import "./Style.css";
@@ -11,15 +13,22 @@ export default function InitialConfig({ setCanvasSize }) {
 
 	const { language, setLanguage } = useLang();
 
+	const [mensage, setMensage] = useState(lang[language].InitialConfig);
+
 	useEffect(() => {
 		setCanvasSize({ width: canvasWidth, height: canvasHeight });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [canvasWidth, canvasHeight]);
 
+	useEffect(() => {
+		setMensage(lang[language].InitialConfig);
+	}, language);
+
 	return (
 		<div className="InitialConfigContainer" style={visible ? { display: "flex" } : { display: "none" }}>
-			<h2>Initial Configurations</h2>
-			<label htmlFor="width">Width:
+			<h2>{mensage.Title}</h2>
+
+			<label htmlFor="width">{mensage.WidthInput}:
 				<input
 					id="width"
 					type="number"
@@ -29,7 +38,7 @@ export default function InitialConfig({ setCanvasSize }) {
 				/>
 			</label>
 
-			<label htmlFor="height">Height:
+			<label htmlFor="height">{mensage.HeightInput}:
 				<input
 					id="height"
 					type="number"
@@ -51,7 +60,7 @@ export default function InitialConfig({ setCanvasSize }) {
 				</select>
 			</label>
 
-			<button onClick={() => setVisible(false)}>Confirm</button>
+			<button onClick={() => setVisible(false)}>{mensage.Confirm}</button>
 		</div>
 	)
 }
