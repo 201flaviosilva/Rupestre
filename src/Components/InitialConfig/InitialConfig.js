@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLang } from "../../Context/Language";
 
 import "./Style.css";
 
@@ -7,16 +8,13 @@ export default function InitialConfig({ setCanvasSize }) {
 
 	const [canvasWidth, setCanvasWidth] = useState(500);
 	const [canvasHeight, setCanvasHeight] = useState(500);
-	const [language, setLanguage] = useState(localStorage.getItem("lang"));
+
+	const { language, setLanguage } = useLang();
 
 	useEffect(() => {
 		setCanvasSize({ width: canvasWidth, height: canvasHeight });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [canvasWidth, canvasHeight]);
-
-	useEffect(() => {
-		if (localStorage.getItem("lang") !== language) localStorage.setItem("lang", language);
-		console.log(localStorage.getItem("lang"));
-	}, [language]);
 
 	return (
 		<div className="InitialConfigContainer" style={visible ? { display: "flex" } : { display: "none" }}>
