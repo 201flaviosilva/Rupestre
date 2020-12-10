@@ -61,7 +61,6 @@ export default function Canvas({ canvasSize }) {
 	function paintBrush(position) {
 		switch (brush) {
 			case "Pencil":
-				console.log(ctx, position, bushOptions);
 				Pencil(ctx, position, bushOptions);
 				break;
 			case "Eraser":
