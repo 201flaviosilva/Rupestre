@@ -1,13 +1,24 @@
 import React, { useRef, useEffect, useState } from "react";
 
+import { useBrush } from "../../Context/BrushOptions";
+
 import Pencil from "./BrushesFunctions/Pencil";
 import Eraser from "./BrushesFunctions/Eraser";
 
 import "./style.css";
 
-export default function Canvas({ canvasSize, canvasInfo }) {
+export default function Canvas({ canvasSize }) {
+	const { brush } = useBrush();
+	const { color } = useBrush();
+	const { size } = useBrush();
+	const { square } = useBrush();
 
-	// console.log(canvasInfo);
+	const [bushOptions, setBushOptions] = useState({ color, size, square });
+
+	useEffect(() => {
+		setBushOptions({ color, size, square });
+	}, [color, size, square]);
+
 	const canvasRef = useRef(null);
 	const [ctx, setCtx] = useState(null);
 	useEffect(() => {
@@ -36,25 +47,25 @@ export default function Canvas({ canvasSize, canvasInfo }) {
 			const position = {
 				last: {
 					x: lastPositionX,
-					y: lastPositionY,
+					y: lastPositionY
 				},
 				actual: {
-					x: positionX,
-					y: positionY
+					x: positionX - (size / 2),
+					y: positionY - (size / 2)
 				}
 			};
-			Brush(position);
+			paintBrush(position);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [positionX, positionY]);
 
-	function Brush(position) {
-		switch (canvasInfo.brush) {
+	function paintBrush(position) {
+		switch (brush) {
 			case "Pencil":
-				Pencil(ctx, position, canvasInfo);
+				console.log(ctx, position, bushOptions);
+				Pencil(ctx, position, bushOptions);
 				break;
 			case "Eraser":
-				Eraser(ctx, position, canvasInfo);
+				Eraser(ctx, position.actual, bushOptions);
 				break;
 			default:
 				break;
@@ -70,14 +81,18 @@ export default function Canvas({ canvasSize, canvasInfo }) {
 	}
 
 	return (
-		<canvas
-			width={canvasSize.width}
-			height={canvasSize.height}
-			ref={canvasRef}
-			onMouseDown={() => setMouseDown(true)}
-			onMouseUp={leaveCanvas}
-			onMouseOut={leaveCanvas}
-			onMouseMove={(evt) => mouseDown && getMousePos(evt)}
-		/>
+		<>
+			<canvas
+				width={canvasSize.width}
+				height={canvasSize.height}
+				ref={canvasRef}
+				onMouseDown={() => setMouseDown(true)}
+				onMouseUp={leaveCanvas}
+				onMouseOut={leaveCanvas}
+				onMouseMove={(evt) => mouseDown && getMousePos(evt)}
+			/>
+			<p>{lastPositionX} x {lastPositionY}</p>
+			<p>{positionX} x {positionY}</p>
+		</>
 	)
 }

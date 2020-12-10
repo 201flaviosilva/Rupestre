@@ -1,13 +1,12 @@
-export default function Pencil(ctx, position, details) {
+export default function Pencil(ctx, position, bushOptions) {
 	const { last, actual } = position;
-	const { color, size, square } = details;
+	const { color, size, square } = bushOptions;
 	ctx.fillStyle = color;
 	ctx.beginPath(ctx);
-	ctx.globalCompositeOperation = "source-over";
 
 	if (!last.x && !last.y) {
 		if (square) ctx.rect(actual.x, actual.y, size, size);
-		else ctx.arc(actual.x, actual.y, size / 2, 0, 2 * Math.PI);
+		else ctx.arc(actual.x, actual.y, size / 2, 0, 2 * Math.PI, false);
 		ctx.fill();
 	} else {
 		ctx.strokeStyle = color;

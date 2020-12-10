@@ -1,0 +1,19 @@
+aside.ToolBoxContainer {
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid black;
+  ul {
+    display: flex;
+    flex-direction: column;
+    li {
+      button {
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}

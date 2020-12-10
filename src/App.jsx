@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LanguageProvider from "./Context/Language";
+import BrushProvider from "./Context/BrushOptions";
 
 import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
@@ -13,9 +14,11 @@ export default function App() {
   return (
     <>
       <LanguageProvider>
-        <Header />
-        <Main />
-        <Footer />
+        <BrushProvider>
+          <Header />
+          <Main />
+          <Footer />
+        </BrushProvider>
       </LanguageProvider>
     </>
   );

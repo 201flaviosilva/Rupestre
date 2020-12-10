@@ -1,12 +1,15 @@
-export default function Eraser(ctx, position, details) {
+export default function Eraser(ctx, position, bushOptions) {
 	const { x, y } = position;
-	const { size, square } = details;
+	const { size } = bushOptions;
 
-	ctx.beginPath(ctx);
+	ctx.clearRect(x, y, size, size);
+	// ctx.clearRect(0, 0, 500, 500);
 
-	ctx.globalCompositeOperation = "destination-out";
-	if (square) ctx.rect(x, y, size, size);
-	else ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
+	// ctx.beginPath(ctx);
 
-	ctx.fill();
+	// ctx.globalCompositeOperation = "destination-out";
+	// if (square) ctx.rect(x, y, size, size);
+	// else ctx.arc(x, y, size / 2, 0, 2 * Math.PI);
+
+	// ctx.fill();
 };
