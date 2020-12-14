@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import InitialConfig from "../InitialConfig/InitialConfig";
+import InitialConfig from "../Modal/InitialConfig/InitialConfig";
 import Brushes from "../Brushes/Brushes";
 import ToolBox from "../ToolBox/ToolBox";
 import Canvas from "../Canvas/Canvas";
@@ -12,7 +12,7 @@ export default function Main() {
 
 	return (
 		<main>
-			{/* <InitialConfig setCanvasSize={setCanvasSize} /> */}
+			<InitialConfig setCanvasSize={setCanvasSize} />
 
 			<Brushes />
 			<ToolBox />

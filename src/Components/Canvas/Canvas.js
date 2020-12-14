@@ -90,8 +90,8 @@ export default function Canvas({ canvasSize }) {
 				onMouseOut={leaveCanvas}
 				onMouseMove={(evt) => mouseDown && getMousePos(evt)}
 			/>
-			<p>{lastPositionX} x {lastPositionY}</p>
-			<p>{positionX} x {positionY}</p>
+			{/* <p>{lastPositionX} x {lastPositionY}</p>
+			<p>{positionX} x {positionY}</p> */}
 		</>
 	)
 }
