@@ -1,8 +1,33 @@
 {
   "InitialConfig": {
     "Title": "Configurações Iniciais",
+    "NameInput": "Nome do Projeto",
     "WidthInput": "Largura",
     "HeightInput": "Altura",
     "Confirm": "Confirmar"
+  },
+  "Brushes": {
+    "Title": "Pinceis",
+    "Pencil": "Lápiz",
+    "Eraser": "Borracha"
+  },
+  "ToolBox": {
+    "Title": "Ferramentas do Pincel",
+    "Color": {
+      "Label": "Cor",
+      "Title": "Selecionar Cor"
+    },
+    "Size": {
+      "Label": "Tamanho",
+      "Title": "Defenir Tamanho"
+    },
+    "Format": {
+      "Label": "Formato",
+      "Title": "Selecionar Formato"
+    }
+  },
+  "Footer": {
+    "Width": "Largura",
+    "Height": "Altura"
   }
 }

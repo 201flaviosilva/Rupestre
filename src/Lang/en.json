@@ -1,8 +1,33 @@
 {
   "InitialConfig": {
     "Title": "Initial Configurations",
+    "NameInput": "Project Nome",
     "WidthInput": "Width",
     "HeightInput": "Height",
     "Confirm": "Confirm"
+  },
+  "Brushes": {
+    "Title": "Brushes",
+    "Pencil": "Pencil",
+    "Eraser": "Eraser"
+  },
+  "ToolBox": {
+    "Title": "Brush ToolBox",
+    "Color": {
+      "Label": "Color",
+      "Title": "Choose Color"
+    },
+    "Size": {
+      "Label": "Size",
+      "Title": "Choose Size"
+    },
+    "Format": {
+      "Label": "Format",
+      "Title": "Select format"
+    }
+  },
+  "Footer": {
+    "Width": "Width",
+    "Height": "Height"
   }
 }

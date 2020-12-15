@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const BrushContext = createContext();
 
@@ -6,10 +6,10 @@ export default function BrushProvider({ children }) {
 	const [brush, setBrush] = useState("Pencil");
 	const [color, setColor] = useState("#000000");
 	const [size, setSize] = useState(10);
-	const [square, setSquare] = useState(true);
+	const [format, setFormat] = useState("Square");
 
 	return (
-		<BrushContext.Provider value={{ brush, color, size, square, setBrush, setColor, setSize, setSquare }}>
+		<BrushContext.Provider value={{ brush, color, size, format, setBrush, setColor, setSize, setFormat }}>
 			{children}
 		</BrushContext.Provider>
 	)
@@ -17,6 +17,6 @@ export default function BrushProvider({ children }) {
 
 export function useBrush() {
 	const context = useContext(BrushContext);
-	const { brush, color, size, square, setBrush, setColor, setSize, setSquare } = context;
-	return { brush, color, size, square, setBrush, setColor, setSize, setSquare };
+	const { brush, color, size, format, setBrush, setColor, setSize, setFormat } = context;
+	return { brush, color, size, format, setBrush, setColor, setSize, setFormat };
 }

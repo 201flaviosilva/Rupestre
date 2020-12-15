@@ -5,7 +5,8 @@ aside.BrushesContainer {
   border: 1px solid black;
   ul {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     padding: 5px;
     gap: 5px;
     li {

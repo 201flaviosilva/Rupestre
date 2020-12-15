@@ -1,35 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
+import { useLang } from "../../Context/Language";
 import { useBrush } from "../../Context/BrushOptions";
+
+import lang from "../../Lang/Lang";
 
 import "./Style/Style.css";
 
 export default function ToolBox() {
 	const { color, setColor } = useBrush();
 	const { size, setSize } = useBrush();
-	const { square, setSquare } = useBrush(); // Formate
+	// const { format, setFormat } = useBrush();
+
+	// Language
+	const { language } = useLang();
+
+	const [mensage, setMensage] = useState(lang[language].ToolBox);
+
+	useEffect(() => {
+		setMensage(lang[language].ToolBox);
+	}, [language]);
 
 	return (
 		<aside className="ToolBoxContainer">
-			<h2>Tool Options</h2>
+			<h2>{mensage.Title}</h2>
+
 			<ul>
-				<label htmlFor="color">
-					Color:
-				<input
+				<label htmlFor="color">{mensage.Color.Label}:
+					<input
 						id="color"
 						type="color"
-						title="Select color"
+						title={mensage.Color.Title}
 						value={color}
 						onChange={(e) => setColor(e.target.value)}
 					/>
 				</label>
-
-				<label htmlFor="size">
-					Size: 1
-				<input
+				<label htmlFor="size">{mensage.Size.Label}:
+				1 <input
 						id="size"
 						type="range"
-						title="Select Size"
+						title={mensage.Size.Title}
 						min={1}
 						max={100}
 						value={size}
@@ -38,21 +48,11 @@ export default function ToolBox() {
 				100
 			</label>
 
-				<label htmlFor="square">
-					Square:
-				<input
-						id="square"
-						type="checkbox"
-						title="Select format"
-						checked={square}
-						value={square}
-						onChange={() => setSquare(!square)}
-					/>
-
+				<label htmlFor="square">{mensage.Format.Label}:
 					<select
 						id="format"
 						name="format"
-						title="Select format"
+						title={mensage.Format.Title}
 					// checked={format}
 					// value={format}
 					// onChange={() => setFormat(e.target.value)}

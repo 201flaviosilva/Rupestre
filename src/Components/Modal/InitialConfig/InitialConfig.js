@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from "react";
 
-import Modal from "../Modal";
+import { useLang } from "../../../Context/Language";
+import { useProject } from "../../../Context/ProjectOptions";
 
 import lang from "../../../Lang/Lang";
 
-import { useLang } from "../../../Context/Language";
+import Modal from "../Modal";
 
 import "./Style.css";
 
-export default function InitialConfig({ setCanvasSize }) {
-	const [canvasWidth, setCanvasWidth] = useState(500);
-	const [canvasHeight, setCanvasHeight] = useState(500);
+export default function InitialConfig() {
+	const { name, setName } = useProject();
+	const { canvasWidth, setCanvasWidth } = useProject();
+	const { canvasHeight, setCanvasHeight } = useProject(); // Formate
 
 	const { language, setLanguage } = useLang();
 
 	const [mensage, setMensage] = useState(lang[language].InitialConfig);
-
-	useEffect(() => {
-		setCanvasSize({ width: canvasWidth, height: canvasHeight });
-	}, [canvasWidth, canvasHeight]);
 
 	useEffect(() => {
 		setMensage(lang[language].InitialConfig);
@@ -43,11 +41,23 @@ export default function InitialConfig({ setCanvasSize }) {
 					</select>
 				</label> */}
 
+				<label htmlFor="Name">{mensage.NameInput}:
+				<input
+						id="Name"
+						type="text"
+						title="Project Name"
+						placeholder="Project Name"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
+				</label>
+
 				<label htmlFor="width">{mensage.WidthInput}:
 				<input
 						id="width"
 						type="number"
 						title="Paper Width"
+						placeholder="Paper Width"
 						value={canvasWidth}
 						onChange={(e) => setCanvasWidth(e.target.value)}
 					/>
@@ -58,6 +68,7 @@ export default function InitialConfig({ setCanvasSize }) {
 						id="height"
 						type="number"
 						title="Paper Height"
+						placeholder="Paper Height"
 						value={canvasHeight}
 						onChange={(e) => setCanvasHeight(e.target.value)}
 					/>
@@ -67,7 +78,8 @@ export default function InitialConfig({ setCanvasSize }) {
 				<select
 						id="language"
 						name="language"
-						title="App language"
+						title="App Language"
+						placeholder="App Language"
 						value={language}
 						onChange={(e) => setLanguage(e.target.value)}>
 						<option value="en">English</option>

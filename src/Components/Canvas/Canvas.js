@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
+import { useProject } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 
 import Pencil from "./BrushesFunctions/Pencil";
@@ -7,17 +8,15 @@ import Eraser from "./BrushesFunctions/Eraser";
 
 import "./style.css";
 
-export default function Canvas({ canvasSize }) {
-	const { brush } = useBrush();
-	const { color } = useBrush();
-	const { size } = useBrush();
-	const { square } = useBrush();
+export default function Canvas() {
+	const { canvasWidth, canvasHeight } = useProject();
+	const { brush, color, size, format } = useBrush();
 
-	const [bushOptions, setBushOptions] = useState({ color, size, square });
+	const [bushOptions, setBushOptions] = useState({ color, size, format });
 
 	useEffect(() => {
-		setBushOptions({ color, size, square });
-	}, [color, size, square]);
+		setBushOptions({ color, size, format });
+	}, [color, size, format]);
 
 	const canvasRef = useRef(null);
 	const [ctx, setCtx] = useState(null);
@@ -82,8 +81,8 @@ export default function Canvas({ canvasSize }) {
 	return (
 		<>
 			<canvas
-				width={canvasSize.width}
-				height={canvasSize.height}
+				width={canvasWidth}
+				height={canvasHeight}
 				ref={canvasRef}
 				onMouseDown={() => setMouseDown(true)}
 				onMouseUp={leaveCanvas}
