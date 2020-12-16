@@ -1,6 +1,15 @@
 {
   "InitialConfig": {
     "Title": "Configurações Iniciais",
+    "ProjectType": {
+      "Label": "Tipo de Projeto",
+      "Title": "Tipo de Projeto",
+      "Animation": "Animação",
+      "BD": "BD",
+      "Draw": "Desenho",
+      "StoryBoard": "Story Board",
+      "SVG": "SVG"
+    },
     "NameInput": "Nome do Projeto",
     "WidthInput": "Largura",
     "HeightInput": "Altura",
@@ -9,7 +18,8 @@
   "Brushes": {
     "Title": "Pinceis",
     "Pencil": "Lápiz",
-    "Eraser": "Borracha"
+    "Eraser": "Borracha",
+    "PaintBucket": "Balde de Tinta"
   },
   "ToolBox": {
     "Title": "Ferramentas do Pincel",
@@ -28,6 +38,7 @@
   },
   "Footer": {
     "Width": "Largura",
-    "Height": "Altura"
+    "Height": "Altura",
+    "Settings": "Definições"
   }
 }

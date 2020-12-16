@@ -1,6 +1,14 @@
 {
   "InitialConfig": {
     "Title": "Initial Configurations",
+    "ProjectType": {
+      "Label": "Project Type",
+      "Title": "Project Type",
+      "Animation": "Animation",
+      "BD": "BD",
+      "Draw": "Draw",
+      "StoryBoard": "Story Board"
+    },
     "NameInput": "Project Nome",
     "WidthInput": "Width",
     "HeightInput": "Height",
@@ -9,7 +17,8 @@
   "Brushes": {
     "Title": "Brushes",
     "Pencil": "Pencil",
-    "Eraser": "Eraser"
+    "Eraser": "Eraser",
+    "PaintBucket": "Paint Bucket"
   },
   "ToolBox": {
     "Title": "Brush ToolBox",
@@ -28,6 +37,7 @@
   },
   "Footer": {
     "Width": "Width",
-    "Height": "Height"
+    "Height": "Height",
+    "Settings": "Settings"
   }
 }

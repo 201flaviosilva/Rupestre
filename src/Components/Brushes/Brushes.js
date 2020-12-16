@@ -9,12 +9,13 @@ import imgs from "../../Utils/images";
 
 // import Pencil from "./Pencil/Pencil";
 // import Eraser from "./Eraser/Eraser";
+import HideButton from "../HideButton/HideButton";
 
 import "./Style/Style.css";
 
 export default function Brushes() {
 	const { setBrush } = useBrush();
-	const brushesArray = ["Pencil", "Eraser"];
+	const brushesArray = ["Pencil", "Eraser", "PaintBucket"];
 
 	const { language } = useLang();
 
@@ -24,10 +25,16 @@ export default function Brushes() {
 		setMensage(lang[language].Brushes);
 	}, [language]);
 
+	const [visible, setVisible] = useState(true);
+
 	return (
 		<aside className="BrushesContainer">
-			<h2>{mensage.Title}</h2>
-			<ul>
+			<div className="BrushesHeader">
+				<h2>{mensage.Title}</h2>
+				<HideButton visible={visible} setVisible={setVisible} />
+			</div>
+
+			<ul style={visible ? { display: "grid" } : { display: "none" }}>
 				{brushesArray.map(b =>
 					<li key={b}>
 						<button

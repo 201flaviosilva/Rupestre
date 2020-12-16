@@ -1,6 +1,5 @@
-export default function Eraser(ctx, position, bushOptions) {
+export default function Eraser(ctx, position, size) {
 	const { x, y } = position;
-	const { size } = bushOptions;
 
 	ctx.clearRect(x, y, size, size);
 	// ctx.clearRect(0, 0, 500, 500);

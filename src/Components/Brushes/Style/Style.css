@@ -1,8 +1,15 @@
 aside.BrushesContainer {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5px;
+  padding: 5px;
   border: 1px solid black;
+  border-radius: 2px;
+}
+
+aside.BrushesContainer div.BrushesHeader {
+  display: flex;
+  border-bottom: 1px solid black;
 }
 
 aside.BrushesContainer ul {

@@ -1,9 +1,14 @@
 aside.ToolBoxContainer {
-  padding: 5px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 5px;
+  padding: 5px;
   border: 1px solid black;
+  border-radius: 2px;
+  div.ToolBoxHeader {
+    display: flex;
+    border-bottom: 1px solid black;
+  }
   ul {
     display: flex;
     flex-direction: column;

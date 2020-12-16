@@ -3,4 +3,13 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  p {
+    span {
+      margin: 0 2px;
+    }
+  }
+  button {
+    border: none;
+    background: none;
+  }
 }

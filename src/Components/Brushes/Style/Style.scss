@@ -1,8 +1,14 @@
 aside.BrushesContainer {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5px;
+  padding: 5px;
   border: 1px solid black;
+  border-radius: 2px;
+  div.BrushesHeader {
+    display: flex;
+    border-bottom: 1px solid black;
+  }
   ul {
     display: grid;
     // grid-template-columns: repeat(3, 1fr);

@@ -5,6 +5,7 @@ import { useBrush } from "../../Context/BrushOptions";
 
 import Pencil from "./BrushesFunctions/Pencil";
 import Eraser from "./BrushesFunctions/Eraser";
+import PaintBucket from "./BrushesFunctions/PaintBucket";
 
 import "./style.css";
 
@@ -54,7 +55,7 @@ export default function Canvas() {
 				}
 			};
 			paintBrush(position);
-		}
+		};
 	}, [positionX, positionY]);
 
 	function paintBrush(position) {
@@ -63,7 +64,10 @@ export default function Canvas() {
 				Pencil(ctx, position, bushOptions);
 				break;
 			case "Eraser":
-				Eraser(ctx, position.actual, bushOptions);
+				Eraser(ctx, position.actual, bushOptions.size);
+				break;
+			case "PaintBucket":
+				PaintBucket(ctx, position.actual, bushOptions.color);
 				break;
 			default:
 				break;

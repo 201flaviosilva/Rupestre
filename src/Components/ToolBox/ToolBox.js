@@ -5,6 +5,8 @@ import { useBrush } from "../../Context/BrushOptions";
 
 import lang from "../../Lang/Lang";
 
+import HideButton from "../HideButton/HideButton";
+
 import "./Style/Style.css";
 
 export default function ToolBox() {
@@ -21,11 +23,16 @@ export default function ToolBox() {
 		setMensage(lang[language].ToolBox);
 	}, [language]);
 
+	const [visible, setVisible] = useState(true);
+
 	return (
 		<aside className="ToolBoxContainer">
-			<h2>{mensage.Title}</h2>
+			<div className="ToolBoxHeader">
+				<h2>{mensage.Title}</h2>
+				<HideButton visible={visible} setVisible={setVisible} />
+			</div>
 
-			<ul>
+			<ul style={visible ? { display: "grid" } : { display: "none" }}>
 				<label htmlFor="color">{mensage.Color.Label}:
 					<input
 						id="color"
@@ -45,7 +52,7 @@ export default function ToolBox() {
 						value={size}
 						onChange={(e) => setSize(e.target.value)}
 					/>
-				100
+				100 [{size}]
 			</label>
 
 				<label htmlFor="square">{mensage.Format.Label}:

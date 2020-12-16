@@ -7,12 +7,13 @@ import lang from "../../../Lang/Lang";
 
 import Modal from "../Modal";
 
-import "./Style.css";
+import "./Style/Style.css";
 
 export default function InitialConfig() {
 	const { name, setName } = useProject();
+	const { projectType, setProjectType } = useProject();
 	const { canvasWidth, setCanvasWidth } = useProject();
-	const { canvasHeight, setCanvasHeight } = useProject(); // Formate
+	const { canvasHeight, setCanvasHeight } = useProject();
 
 	const { language, setLanguage } = useLang();
 
@@ -26,24 +27,10 @@ export default function InitialConfig() {
 		<Modal title={mensage.Title}>
 			<div className="InitialConfigContainer">
 
-				{/* <label htmlFor="ProjectType">Project Type:
-				<select
-						id="ProjectType"
-						name="Project Type"
-						title="Project Type"
-					// value={projectType}
-					// onChange={(e) => setProjectType(e.target.value)}
-					>
-						<option value="animation">Animation</option>
-						<option value="bd">BD</option>
-						<option value="draw" selected={"true"}>Draw</option>
-						<option value="storyBoard">Story Board</option>
-					</select>
-				</label> */}
-
 				<label htmlFor="Name">{mensage.NameInput}:
-				<input
+					<input
 						id="Name"
+						name="Name"
 						type="text"
 						title="Project Name"
 						placeholder="Project Name"
@@ -55,6 +42,7 @@ export default function InitialConfig() {
 				<label htmlFor="width">{mensage.WidthInput}:
 				<input
 						id="width"
+						name="Width"
 						type="number"
 						title="Paper Width"
 						placeholder="Paper Width"
@@ -66,6 +54,7 @@ export default function InitialConfig() {
 				<label htmlFor="height">{mensage.HeightInput}:
 				<input
 						id="height"
+						name="Height"
 						type="number"
 						title="Paper Height"
 						placeholder="Paper Height"
@@ -87,7 +76,7 @@ export default function InitialConfig() {
 					</select>
 				</label>
 
-				{/* <button>{mensage.Confirm}</button> */}
+				<button>Export</button>
 			</div>
 		</Modal>
 	)
