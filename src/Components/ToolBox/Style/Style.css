@@ -12,12 +12,7 @@ aside.ToolBoxContainer div.ToolBoxHeader {
   border-bottom: 1px solid black;
 }
 
-aside.ToolBoxContainer ul {
+aside.ToolBoxContainer div.ToolBoxMain {
   display: flex;
   flex-direction: column;
-}
-
-aside.ToolBoxContainer ul li button img {
-  width: 24px;
-  height: 24px;
 }

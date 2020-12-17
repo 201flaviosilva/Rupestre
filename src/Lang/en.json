@@ -32,8 +32,13 @@
     },
     "Format": {
       "Label": "Format",
-      "Title": "Select format"
-    }
+      "Title": "Select format",
+      "Formats": {
+        "Square": "Square",
+        "Circle": "Circle"
+      }
+    },
+    "Clear": "Clear Canvas"
   },
   "Footer": {
     "Width": "Width",

@@ -9,16 +9,8 @@ aside.ToolBoxContainer {
     display: flex;
     border-bottom: 1px solid black;
   }
-  ul {
+  div.ToolBoxMain {
     display: flex;
     flex-direction: column;
-    li {
-      button {
-        img {
-          width: 24px;
-          height: 24px;
-        }
-      }
-    }
   }
 }

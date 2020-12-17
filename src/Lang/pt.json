@@ -33,8 +33,13 @@
     },
     "Format": {
       "Label": "Formato",
-      "Title": "Selecionar Formato"
-    }
+      "Title": "Selecionar Formato",
+      "Formats": {
+        "Square": "Quadrado",
+        "Circle": "Círculo"
+      }
+    },
+    "Clear": "Limpar Tela"
   },
   "Footer": {
     "Width": "Largura",
