@@ -9,8 +9,7 @@ import Pencil from "../Assets/Icons/Pencil.svg";
 import Settings from "../Assets/Icons/Settings.svg";
 import XImage from "../Assets/Icons/x.svg";
 
-const imgs = {
-	// Icons
+export const Icons = {
 	ArrowDown,
 	ArrowLeft,
 	ArrowRight,
@@ -22,4 +21,3 @@ const imgs = {
 	XImage
 };
 
-export default imgs;

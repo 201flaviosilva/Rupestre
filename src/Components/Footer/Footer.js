@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 
-import { useLang } from "../../Context/Language";
 import { useProject } from "../../Context/ProjectOptions";
 
 import lang from "../../Lang/Lang";
-import imgs from "../../Utils/images";
+import { Icons } from "../../Managers/Images";
 
 import "./Style.css";
 
 export default function Footer() {
 	const { canvasWidth, canvasHeight } = useProject();
 
-	const { language } = useLang();
+	const { language } = useProject();
 
 	const [mensage, setMensage] = useState(lang[language].Footer);
 
@@ -31,7 +30,7 @@ export default function Footer() {
 
 			<button>
 				<img
-					src={imgs.Settings}
+					src={Icons.Settings}
 					alt={mensage.Settings}
 					title={mensage.Settings}
 				/>

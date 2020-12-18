@@ -1,14 +1,27 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const ProjectContext = createContext();
 
 export default function ProjectProvider({ children }) {
+	useEffect(() => {
+		if (!localStorage.getItem("lang")) {
+			localStorage.setItem("lang", "pt");
+		}
+	});
+
+	const [language, setLanguage] = useState(localStorage.getItem("lang"));
+
+	useEffect(() => {
+		localStorage.setItem("lang", language);
+	}, [language]);
+
 	const [name, setName] = useState("Unnamed");
+	const [projectType, setProjectType] = useState("draw");
 	const [canvasWidth, setCanvasWidth] = useState(500);
 	const [canvasHeight, setCanvasHeight] = useState(500);
 
 	return (
-		<ProjectContext.Provider value={{ name, canvasWidth, canvasHeight, setCanvasHeight, setCanvasWidth, setName }}>
+		<ProjectContext.Provider value={{ name, projectType, canvasWidth, canvasHeight, language, setLanguage, setCanvasHeight, setCanvasWidth, setProjectType, setName }}>
 			{children}
 		</ProjectContext.Provider>
 	)
@@ -16,6 +29,6 @@ export default function ProjectProvider({ children }) {
 
 export function useProject() {
 	const context = useContext(ProjectContext);
-	const { name, canvasWidth, canvasHeight, setCanvasHeight, setCanvasWidth, setName } = context;
-	return { name, canvasWidth, canvasHeight, setCanvasHeight, setCanvasWidth, setName };
+	const { name, projectType, canvasWidth, canvasHeight, language, setLanguage, setCanvasHeight, setCanvasWidth, setProjectType, setName } = context;
+	return { name, projectType, canvasWidth, canvasHeight, language, setLanguage, setCanvasHeight, setCanvasWidth, setProjectType, setName };
 }

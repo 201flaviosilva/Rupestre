@@ -1,6 +1,5 @@
 import React from 'react';
 
-import LanguageProvider from "./Context/Language";
 import ProjectProvider from "./Context/ProjectOptions";
 import BrushProvider from "./Context/BrushOptions";
 
@@ -14,15 +13,13 @@ import "./Style/App.css";
 export default function App() {
   return (
     <>
-      <LanguageProvider>
-        <ProjectProvider>
-          <BrushProvider>
-            <Header />
-            <Main />
-            <Footer />
-          </BrushProvider>
-        </ProjectProvider>
-      </LanguageProvider>
+      <ProjectProvider>
+        <BrushProvider>
+          <Header />
+          <Main />
+          <Footer />
+        </BrushProvider>
+      </ProjectProvider>
     </>
   );
 }

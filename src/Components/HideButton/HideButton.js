@@ -1,6 +1,6 @@
 import React from "react";
 
-import imgs from "../../Utils/images";
+import { Icons } from "../../Managers/Images";
 
 import "./Style/Style.css";
 
@@ -10,7 +10,7 @@ export default function HideButton({ visible, setVisible }) {
 			className="HideButton"
 			onClick={() => setVisible(!visible)}
 		>
-			<img src={visible ? imgs.ArrowUp : imgs.ArrowDown} alt="Close/Open" />
+			<img src={visible ? Icons.ArrowUp : Icons.ArrowDown} alt="Close/Open" />
 		</button>
 	)
 }

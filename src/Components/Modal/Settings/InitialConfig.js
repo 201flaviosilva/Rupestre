@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import { useLang } from "../../../Context/Language";
 import { useProject } from "../../../Context/ProjectOptions";
 
 import lang from "../../../Lang/Lang";
@@ -15,7 +14,7 @@ export default function InitialConfig() {
 	const { canvasWidth, setCanvasWidth } = useProject();
 	const { canvasHeight, setCanvasHeight } = useProject();
 
-	const { language, setLanguage } = useLang();
+	const { language, setLanguage } = useProject();
 
 	const [mensage, setMensage] = useState(lang[language].InitialConfig);
 
@@ -45,13 +44,18 @@ export default function InitialConfig() {
 						name="Project Type"
 						title={mensage.ProjectType.Title}
 						defaultValue={projectType}
-						onChange={(e) => setProjectType(e.target.value)}
+						onChange={e => setProjectType(e.target.value)}
 					>
-						<option value="animation" disabled>{mensage.ProjectType.Animation}</option>
-						<option value="bd" disabled>{mensage.ProjectType.BD}</option>
-						<option value="draw">{mensage.ProjectType.Draw}</option>
-						<option value="storyBoard" disabled>{mensage.ProjectType.StoryBoard}</option>
-						<option value="SVG" disabled>{mensage.ProjectType.SVG}</option>
+						<optgroup label="2D">
+							<option value="animation" disabled>{mensage.ProjectType.Animation}</option>
+							<option value="comics" disabled>{mensage.ProjectType.Comics}</option>
+							<option value="draw">{mensage.ProjectType.Draw}</option>
+							<option value="storyBoard" disabled>{mensage.ProjectType.StoryBoard}</option>
+							<option value="svg" disabled>SVG</option>
+						</optgroup>
+						<optgroup label="3D">
+							<option value="modeling" disabled>{mensage.ProjectType.Modeling}</option>
+						</optgroup>
 					</select>
 				</label>
 

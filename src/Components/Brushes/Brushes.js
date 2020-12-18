@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 
-import { useLang } from "../../Context/Language";
+import { useProject } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 
 import lang from "../../Lang/Lang";
-import imgs from "../../Utils/images";
+import { Icons } from "../../Managers/Images";
 
 // import Pencil from "./Pencil/Pencil";
 // import Eraser from "./Eraser/Eraser";
@@ -17,7 +17,7 @@ export default function Brushes() {
 	const { setBrush } = useBrush();
 	const brushesArray = ["Pencil", "Eraser", "PaintBucket"];
 
-	const { language } = useLang();
+	const { language } = useProject();
 
 	const [mensage, setMensage] = useState(lang[language].Brushes);
 
@@ -41,7 +41,7 @@ export default function Brushes() {
 							title={mensage[b]}
 							onClick={() => setBrush(b)}
 						>
-							<img src={imgs[b]} alt={b} />
+							<img src={Icons[b]} alt={b} />
 							<span> {mensage[b]} </span>
 						</button>
 					</li>
