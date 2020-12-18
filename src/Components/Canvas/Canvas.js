@@ -64,10 +64,10 @@ export default function Canvas() {
 				Pencil(ctx, position, bushOptions);
 				break;
 			case "Eraser":
-				Eraser(ctx, position.actual, bushOptions.size);
+				Eraser(ctx, position.actual, size);
 				break;
 			case "PaintBucket":
-				PaintBucket(ctx, position.actual, bushOptions.color);
+				PaintBucket(ctx, position.actual, color);
 				break;
 			default:
 				break;
@@ -88,6 +88,7 @@ export default function Canvas() {
 				width={canvasWidth}
 				height={canvasHeight}
 				ref={canvasRef}
+				onClick={(evt) => getMousePos(evt)}
 				onMouseDown={() => setMouseDown(true)}
 				onMouseUp={leaveCanvas}
 				onMouseOut={leaveCanvas}
