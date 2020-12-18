@@ -5,9 +5,10 @@
       "Label": "Project Type",
       "Title": "Project Type",
       "Animation": "Animation",
-      "BD": "BD",
+      "Comics": "Comics",
       "Draw": "Draw",
-      "StoryBoard": "Story Board"
+      "StoryBoard": "Story Board",
+      "Modeling": "Modeling"
     },
     "NameInput": "Project Nome",
     "WidthInput": "Width",
