@@ -22,7 +22,7 @@
     "PaintBucket": "Paint Bucket"
   },
   "ToolBox": {
-    "Title": "Brush ToolBox",
+    "Title": "ToolBox",
     "Color": {
       "Label": "Color",
       "Title": "Choose Color"

@@ -20,10 +20,12 @@ export default function Canvas() {
 	}, [color, size, format]);
 
 	const canvasRef = useRef(null);
+	const [canvas, setCanvas] = useState(null);
 	const [ctx, setCtx] = useState(null);
 	useEffect(() => {
-		const canvas = canvasRef.current;
-		setCtx(canvas.getContext("2d"));
+		const c = canvasRef.current;
+		setCanvas(c);
+		setCtx(c.getContext("2d"));
 	}, []);
 
 	const [mouseDown, setMouseDown] = useState(false);
@@ -35,7 +37,7 @@ export default function Canvas() {
 
 	//Get Mouse Position
 	function getMousePos(evt) {
-		const rect = canvasRef.current.getBoundingClientRect();
+		const rect = canvas.getBoundingClientRect();
 		setLastPositionX(positionX);
 		setLastPositionY(positionY);
 		setPositionX(evt.clientX - rect.left);
@@ -67,7 +69,7 @@ export default function Canvas() {
 				Eraser(ctx, position.actual, size);
 				break;
 			case "PaintBucket":
-				PaintBucket(ctx, position.actual, color);
+				PaintBucket(canvas, ctx, position.actual, color);
 				break;
 			default:
 				break;
@@ -87,6 +89,7 @@ export default function Canvas() {
 			<canvas
 				width={canvasWidth}
 				height={canvasHeight}
+				id="canvas"
 				ref={canvasRef}
 				onClick={(evt) => getMousePos(evt)}
 				onMouseDown={() => setMouseDown(true)}

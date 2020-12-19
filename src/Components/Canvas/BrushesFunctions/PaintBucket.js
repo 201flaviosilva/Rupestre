@@ -1,24 +1,37 @@
-export default function PaintBucket(ctx, position, color) {
+//! É preciso pintar o canvas de branco
+//! Está a repetir muitas vezes a mesma função (floodFillUtil), provel erro no if return
+import { returnColor } from './ColorPicker';
+import convertColor from '../../../Utils/ConvertColor';
+
+// let num = 0
+export default function PaintBucket(canvas, ctx, position, color) {
 	const { x, y } = position;
-	ctx.fillStyle = color;
-	// floodFill(x, y, color);
-};
+	const newC = convertColor(color);
+	ctx.fillStyle = newC;
+	const prevColor = convertColor(returnColor(canvas, x, y));
+	floodFill(canvas, ctx, x, y, prevColor, newC);
+}
 
+function floodFill(canvas, ctx, x, y, prevColor, newC) {
+	const canvasPixelColor = convertColor(returnColor(canvas, x, y));
+	// console.log(num++);
+	// console.log(canvasPixelColor, prevColor, newC);
+	if (x < 0 || x >= canvas.width ||
+		y < 0 || y >= canvas.height ||
+		canvasPixelColor !== prevColor ||
+		canvasPixelColor === newC) return;
 
-// function floodFill(x, y, newC) {
-// 	floodFillUtil(ctx, x, y, prevC, newC);
-// }
+	const actualP = { x, y };
+	paintPixel(ctx, actualP);
 
-// function floodFillUtil(x, y, prevC, newC) {
-// 	if (x < 0 || x >= maxX ||
-// 		y < 0 || y >= maxY ||
-// 		vitualMap[x][y] != prevC ||
-// 		vitualMap[x][y] == newC) return;
+	floodFill(canvas, ctx, x + 1, y, prevColor, newC);
+	floodFill(canvas, ctx, x - 1, y, prevColor, newC);
+	floodFill(canvas, ctx, x, y + 1, prevColor, newC);
+	floodFill(canvas, ctx, x, y - 1, prevColor, newC);
+}
 
-// 	ctx[x][y] = newC;
-
-// 	floodFillUtil(vitualMap, x + 1, y, prevC, newC);
-// 	floodFillUtil(vitualMap, x - 1, y, prevC, newC);
-// 	floodFillUtil(vitualMap, x, y + 1, prevC, newC);
-// 	floodFillUtil(vitualMap, x, y - 1, prevC, newC);
-// }
+function paintPixel(ctx, actual) {
+	ctx.beginPath(ctx);
+	ctx.rect(actual.x, actual.y, 1, 1);
+	ctx.fill();
+}

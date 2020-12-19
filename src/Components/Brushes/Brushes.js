@@ -15,7 +15,7 @@ import "./Style/Style.css";
 
 export default function Brushes() {
 	const { setBrush } = useBrush();
-	const brushesArray = ["Pencil", "Eraser", "PaintBucket"];
+	const brushes2D = ["Pencil", "Eraser", "PaintBucket"];
 
 	const { language } = useProject();
 
@@ -35,7 +35,7 @@ export default function Brushes() {
 			</div>
 
 			<ul style={visible ? { display: "grid" } : { display: "none" }}>
-				{brushesArray.map(b =>
+				{brushes2D.map(b =>
 					<li key={b}>
 						<button
 							title={mensage[b]}

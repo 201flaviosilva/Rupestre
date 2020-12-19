@@ -16,9 +16,9 @@ export default function ToolBox() {
 	const { brush } = useBrush();
 
 	const { language } = useProject();
-	const [mensage, setMensage] = useState(lang[language].ToolBox);
+	const [mensage, setMensage] = useState(lang[language]);
 	useEffect(() => {
-		setMensage(lang[language].ToolBox);
+		setMensage(lang[language]);
 	}, [language]);
 
 	const [visible, setVisible] = useState(true);
@@ -26,14 +26,14 @@ export default function ToolBox() {
 	return (
 		<aside className="ToolBoxContainer">
 			<div className="ToolBoxHeader">
-				<h2>{mensage.Title}</h2>
+				<h2>{mensage.ToolBox.Title} {mensage.Brushes[brush]}</h2>
 				<HideButton visible={visible} setVisible={setVisible} />
 			</div>
 
 			<div className="ToolBoxMain" style={visible ? { display: "flex" } : { display: "none" }}>
-				{brush === "Pencil" && <Pencil mensage={mensage} />}
-				{brush === "Eraser" && <Eraser mensage={mensage} />}
-				{brush === "PaintBucket" && <PaintBucket mensage={mensage} />}
+				{brush === "Pencil" && <Pencil mensage={mensage.ToolBox} />}
+				{brush === "Eraser" && <Eraser mensage={mensage.ToolBox} />}
+				{brush === "PaintBucket" && <PaintBucket mensage={mensage.ToolBox} />}
 			</div>
 		</aside>
 	)
