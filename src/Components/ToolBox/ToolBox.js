@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useProject } from "../../Context/ProjectOptions";
+import { useLanguage } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 
 import lang from "../../Lang/Lang";
@@ -16,7 +16,7 @@ import "./Style/Style.css";
 export default function ToolBox() {
 	const { brush } = useBrush();
 
-	const { language } = useProject();
+	const { language } = useLanguage();
 	const [mensage, setMensage] = useState(lang[language]);
 	useEffect(() => {
 		setMensage(lang[language]);

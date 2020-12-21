@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useProject } from "../../Context/ProjectOptions";
+import { useProjectValues } from "../../Context/ProjectOptions";
 
 import lang from "../../Lang/Lang";
 import { Icons } from "../../Managers/Images";
@@ -8,9 +8,7 @@ import { Icons } from "../../Managers/Images";
 import "./Style.css";
 
 export default function Footer() {
-	const { canvasWidth, canvasHeight } = useProject();
-
-	const { language } = useProject();
+	const { canvasWidth, canvasHeight, language } = useProjectValues();
 
 	const [mensage, setMensage] = useState(lang[language].Footer);
 

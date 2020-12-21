@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import { useProject } from "../../Context/ProjectOptions";
+import { useProjectValues } from "../../Context/ProjectOptions";
 import { useBrushValues } from "../../Context/BrushOptions";
 import { useColorsPicked } from "../../Context/BrushOptions";
 
@@ -12,7 +12,7 @@ import ColorPicker from "./BrushesFunctions/ColorPicker";
 import "./style.css";
 
 export default function Canvas() {
-	const { canvasWidth, canvasHeight } = useProject();
+	const { canvasWidth, canvasHeight } = useProjectValues();
 	const { brush, color, size, format } = useBrushValues();
 	const { colorsPicked, setColorsPicked } = useColorsPicked();
 

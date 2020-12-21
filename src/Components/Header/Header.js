@@ -2,10 +2,10 @@ import React from "react";
 
 import "./Style/Style.min.css"
 
-import { useProject } from "../../Context/ProjectOptions";
+import { useName } from "../../Context/ProjectOptions";
 
 export default function Header() {
-	const { name } = useProject();
+	const { name } = useName();
 	return (
 		<header>
 			<h1>{name}</h1>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-import { useProject } from "../../Context/ProjectOptions";
+import { useLanguage } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 
 import lang from "../../Lang/Lang";
@@ -17,7 +17,7 @@ export default function Brushes() {
 	const { setBrush } = useBrush();
 	const brushes2D = ["Pencil", "Eraser", "PaintBucket", "ColorPicker"];
 
-	const { language } = useProject();
+	const { language } = useLanguage();
 
 	const [mensage, setMensage] = useState(lang[language].Brushes);
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useProject } from "../../../Context/ProjectOptions";
+import { useName, useProjectType, useCanvasWidth, useCanvasHeight, useLanguage } from "../../../Context/ProjectOptions";
 
 import lang from "../../../Lang/Lang";
 
@@ -9,12 +9,12 @@ import Modal from "../Modal";
 import "./Style/Style.css";
 
 export default function InitialConfig() {
-	const { name, setName } = useProject();
-	const { projectType, setProjectType } = useProject();
-	const { canvasWidth, setCanvasWidth } = useProject();
-	const { canvasHeight, setCanvasHeight } = useProject();
+	const { name, setName } = useName();
+	const { projectType, setProjectType } = useProjectType();
+	const { canvasWidth, setCanvasWidth } = useCanvasWidth();
+	const { canvasHeight, setCanvasHeight } = useCanvasHeight();
 
-	const { language, setLanguage } = useProject();
+	const { language, setLanguage } = useLanguage();
 
 	const [mensage, setMensage] = useState(lang[language].InitialConfig);
 
