@@ -19,7 +19,8 @@
     "Title": "Brushes",
     "Pencil": "Pencil",
     "Eraser": "Eraser",
-    "PaintBucket": "Paint Bucket"
+    "PaintBucket": "Paint Bucket",
+    "ColorPicker": "Color Picker"
   },
   "ToolBox": {
     "Title": "ToolBox",

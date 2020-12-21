@@ -9,6 +9,7 @@ import HideButton from "../HideButton/HideButton";
 import Pencil from "./Brush/Pencil";
 import Eraser from "./Brush/Eraser";
 import PaintBucket from "./Brush/PaintBucket";
+import ColorPicker from "./Brush/ColorPicker";
 
 import "./Style/Style.css";
 
@@ -34,6 +35,7 @@ export default function ToolBox() {
 				{brush === "Pencil" && <Pencil mensage={mensage.ToolBox} />}
 				{brush === "Eraser" && <Eraser mensage={mensage.ToolBox} />}
 				{brush === "PaintBucket" && <PaintBucket mensage={mensage.ToolBox} />}
+				{brush === "ColorPicker" && <ColorPicker />}
 			</div>
 		</aside>
 	)

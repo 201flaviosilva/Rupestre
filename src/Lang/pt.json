@@ -19,7 +19,8 @@
     "Title": "Pinceis",
     "Pencil": "Lápiz",
     "Eraser": "Borracha",
-    "PaintBucket": "Balde de Tinta"
+    "PaintBucket": "Balde de Tinta",
+    "ColorPicker": "Selecionador de Cor"
   },
   "ToolBox": {
     "Title": "Ferramentas de ",
