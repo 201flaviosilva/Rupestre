@@ -1,9 +1,9 @@
 import React from "react";
 
-import { useBrush } from "../../../Context/BrushOptions";
+import { useSize } from "../../../Context/BrushOptions";
 
 export default function SizeInput({ mensage }) {
-	const { size, setSize } = useBrush();
+	const { size, setSize } = useSize();
 	return (
 		<label htmlFor="size">{mensage.Label}:
 				1 <input

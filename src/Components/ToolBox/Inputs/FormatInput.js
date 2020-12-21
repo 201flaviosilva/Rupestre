@@ -1,9 +1,9 @@
 import React from "react";
 
-import { useBrush } from "../../../Context/BrushOptions";
+import { useFormat } from "../../../Context/BrushOptions";
 
 export default function FormatInput({ mensage }) {
-	const { format, setFormat } = useBrush();
+	const { format, setFormat } = useFormat();
 	return (
 		<label htmlFor="square">{mensage.Label}:
 			<select

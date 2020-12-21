@@ -1,9 +1,9 @@
 import React from "react";
 
-import { useBrush } from "../../../Context/BrushOptions";
+import { useColor } from "../../../Context/BrushOptions";
 
 export default function ColorInput({ mensage }) {
-	const { color, setColor } = useBrush();
+	const { color, setColor } = useColor();
 	return (
 		<label htmlFor="color">{mensage.Label}:
 			<input
