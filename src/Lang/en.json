@@ -40,6 +40,10 @@
         "Circle": "Circle"
       }
     },
+    "ColorTolerance": {
+      "Label": "Color Tolerance",
+      "Title": "Color Tolerance"
+    },
     "Clear": "Clear Canvas"
   },
   "Footer": {

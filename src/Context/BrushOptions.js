@@ -8,6 +8,7 @@ export default function BrushProvider({ children }) {
 	const [size, setSize] = useState(100);
 	const [format, setFormat] = useState("Square");
 	const [colorsPicked, setColorsPicked] = useState([]);
+	const [colorTolerance, setColorTolerance] = useState(5);
 
 	return (
 		<BrushContext.Provider value={{
@@ -15,7 +16,8 @@ export default function BrushProvider({ children }) {
 			color, setColor,
 			size, setSize,
 			format, setFormat,
-			colorsPicked, setColorsPicked
+			colorsPicked, setColorsPicked,
+			colorTolerance, setColorTolerance
 		}}>
 			{children}
 		</BrushContext.Provider>
@@ -52,9 +54,15 @@ export function useColorsPicked() {
 	return { colorsPicked, setColorsPicked };
 };
 
+export function useColorTolerance() {
+	const context = useContext(BrushContext);
+	const { colorTolerance, setColorTolerance } = context;
+	return { colorTolerance, setColorTolerance };
+};
+
 
 export function useBrushValues() {
 	const context = useContext(BrushContext);
-	const { brush, color, size, format, colorsPicked } = context;
-	return { brush, color, size, format, colorsPicked };
+	const { brush, color, size, format, colorsPicked, colorTolerance } = context;
+	return { brush, color, size, format, colorsPicked, colorTolerance };
 };

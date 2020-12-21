@@ -11,7 +11,7 @@ export default function Main() {
 
 	return (
 		<main>
-			<InitialConfig />
+			{/* <InitialConfig /> */}
 
 			<Brushes />
 			<ToolBox />

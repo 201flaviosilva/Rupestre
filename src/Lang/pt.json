@@ -40,6 +40,10 @@
         "Circle": "Círculo"
       }
     },
+    "ColorTolerance": {
+      "Label": "Tolerancia de Cor",
+      "Title": "Tolerancia de Cor"
+    },
     "Clear": "Limpar Tela"
   },
   "Footer": {

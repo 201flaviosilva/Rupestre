@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
 import { useProjectValues } from "../../Context/ProjectOptions";
-import { useBrushValues } from "../../Context/BrushOptions";
-import { useColorsPicked } from "../../Context/BrushOptions";
+import { useBrushValues, useColorsPicked } from "../../Context/BrushOptions";
 
 import Pencil from "./BrushesFunctions/Pencil";
 import Eraser from "./BrushesFunctions/Eraser";
@@ -13,29 +12,31 @@ import "./style.css";
 
 export default function Canvas() {
 	const { canvasWidth, canvasHeight } = useProjectValues();
-	const { brush, color, size, format } = useBrushValues();
+	const { brush, color, size, format, colorTolerance } = useBrushValues();
 	const { colorsPicked, setColorsPicked } = useColorsPicked();
 
 	const [bushOptions, setBushOptions] = useState({ color, size, format });
 
 	useEffect(() => {
-		setBushOptions({ color, size, format });
-	}, [color, size, format]);
+		setBushOptions({ color, size, format, colorTolerance });
+	}, [color, size, format, colorTolerance]);
 
 	const canvasRef = useRef(null);
 	const [canvas, setCanvas] = useState(null);
 	const [ctx, setCtx] = useState(null);
 	useEffect(() => {
 		const c = canvasRef.current;
+		const context = c.getContext("2d");
 		setCanvas(c);
-		setCtx(c.getContext("2d"));
+		setCtx(context);
+		if (c && context) paintBgCanvas(c, context);
 	}, []);
 
-	useEffect(() => {
+	function paintBgCanvas(c, context) {
 		const position = { x: 1, y: 1 };
-		if (ctx && canvas) PaintBucket(canvas, ctx, position, "#ffffff");
-	}, [ctx]);
-
+		const brushOpt = { color: "#ffffff", colorTolerance };
+		PaintBucket(c, context, position, brushOpt);
+	};
 
 	const [mouseDown, setMouseDown] = useState(false);
 
@@ -44,14 +45,14 @@ export default function Canvas() {
 	const [positionX, setPositionX] = useState(null);
 	const [positionY, setPositionY] = useState(null);
 
-	//Get Mouse Position
 	function getMousePos(evt) {
+		//Get Mouse Position
 		const rect = canvas.getBoundingClientRect();
 		setLastPositionX(positionX);
 		setLastPositionY(positionY);
 		setPositionX(evt.clientX - rect.left);
 		setPositionY(evt.clientY - rect.top);
-	}
+	};
 
 	useEffect(() => {
 		if (positionX && positionY) {
@@ -63,6 +64,10 @@ export default function Canvas() {
 				actual: {
 					x: positionX - (size / 2),
 					y: positionY - (size / 2)
+				},
+				real: {
+					x: positionX,
+					y: positionY
 				}
 			};
 			paintBrush(position);
@@ -78,15 +83,15 @@ export default function Canvas() {
 				Eraser(ctx, position.actual, size);
 				break;
 			case "PaintBucket":
-				PaintBucket(canvas, ctx, position.actual, color);
+				PaintBucket(canvas, ctx, position.real, bushOptions);
 				break;
 			case "ColorPicker":
-				ColorPicker(canvas, position.actual, { colorsPicked, setColorsPicked });
+				ColorPicker(canvas, position.real, { colorsPicked, setColorsPicked });
 				break;
 			default:
 				break;
 		}
-	}
+	};
 
 	function leaveCanvas() {
 		setMouseDown(false);
@@ -94,14 +99,13 @@ export default function Canvas() {
 		setLastPositionY(null);
 		setPositionX(null);
 		setPositionY(null);
-	}
+	};
 
 	return (
 		<>
 			<canvas
 				width={canvasWidth}
 				height={canvasHeight}
-				id="canvas"
 				ref={canvasRef}
 				onClick={(evt) => getMousePos(evt)}
 				onMouseDown={() => setMouseDown(true)}
@@ -109,8 +113,6 @@ export default function Canvas() {
 				onMouseOut={leaveCanvas}
 				onMouseMove={(evt) => mouseDown && getMousePos(evt)}
 			/>
-			{/* <p>{lastPositionX} x {lastPositionY}</p>
-			<p>{positionX} x {positionY}</p> */}
 		</>
 	)
 }
