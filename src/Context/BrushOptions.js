@@ -4,12 +4,19 @@ const BrushContext = createContext();
 
 export default function BrushProvider({ children }) {
 	const [brush, setBrush] = useState("Pencil");
-	const [color, setColor] = useState("#000000");
-	const [size, setSize] = useState(10);
+	const [color, setColor] = useState("#ff0000");
+	const [size, setSize] = useState(100);
 	const [format, setFormat] = useState("Square");
+	const [colorsPicked, setColorsPicked] = useState([]);
 
 	return (
-		<BrushContext.Provider value={{ brush, color, size, format, setBrush, setColor, setSize, setFormat }}>
+		<BrushContext.Provider value={{
+			brush, setBrush,
+			color, setColor,
+			size, setSize,
+			format, setFormat,
+			colorsPicked, setColorsPicked
+		}}>
 			{children}
 		</BrushContext.Provider>
 	)
@@ -17,6 +24,37 @@ export default function BrushProvider({ children }) {
 
 export function useBrush() {
 	const context = useContext(BrushContext);
-	const { brush, color, size, format, setBrush, setColor, setSize, setFormat } = context;
-	return { brush, color, size, format, setBrush, setColor, setSize, setFormat };
-}
+	const { brush, setBrush } = context;
+	return { brush, setBrush };
+};
+
+export function useColor() {
+	const context = useContext(BrushContext);
+	const { color, setColor } = context;
+	return { color, setColor };
+};
+
+export function useSize() {
+	const context = useContext(BrushContext);
+	const { size, setSize } = context;
+	return { size, setSize };
+};
+
+export function useFormat() {
+	const context = useContext(BrushContext);
+	const { format, setFormat } = context;
+	return { format, setFormat };
+};
+
+export function useColorsPicked() {
+	const context = useContext(BrushContext);
+	const { colorsPicked, setColorsPicked } = context;
+	return { colorsPicked, setColorsPicked };
+};
+
+
+export function useBrushValues() {
+	const context = useContext(BrushContext);
+	const { brush, color, size, format, colorsPicked } = context;
+	return { brush, color, size, format, colorsPicked };
+};
