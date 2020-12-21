@@ -3,6 +3,7 @@ import ArrowDown from "../Assets/Icons/ArrowDown.svg";
 import ArrowLeft from "../Assets/Icons/ArrowLeft.svg";
 import ArrowRight from "../Assets/Icons/ArrowRight.svg";
 import ArrowUp from "../Assets/Icons/ArrowUp.svg";
+import ColorPicker from "../Assets/Icons/ColorPicker.svg";
 import Eraser from "../Assets/Icons/Eraser.svg";
 import PaintBucket from "../Assets/Icons/PaintBucket.svg";
 import Pencil from "../Assets/Icons/Pencil.svg";
@@ -14,6 +15,7 @@ export const Icons = {
 	ArrowLeft,
 	ArrowRight,
 	ArrowUp,
+	ColorPicker,
 	Eraser,
 	PaintBucket,
 	Pencil,
