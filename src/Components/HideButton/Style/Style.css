@@ -1,4 +1,6 @@
 button.HideButton {
+  width: 25px;
+  height: 25px;
   margin: 0 0 2px 4px;
   padding: 1px;
   display: flex;

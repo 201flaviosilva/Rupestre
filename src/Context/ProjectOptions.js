@@ -15,7 +15,7 @@ export default function ProjectProvider({ children }) {
 		localStorage.setItem("lang", language);
 	}, [language]);
 
-	const [name, setName] = useState("Unnamed");
+	const [name, setName] = useState("Unnamed - Rupestre");
 	const [projectType, setProjectType] = useState("draw");
 	const [canvasWidth, setCanvasWidth] = useState(500);
 	const [canvasHeight, setCanvasHeight] = useState(500);

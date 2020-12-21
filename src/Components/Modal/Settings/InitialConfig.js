@@ -46,16 +46,11 @@ export default function InitialConfig() {
 						defaultValue={projectType}
 						onChange={e => setProjectType(e.target.value)}
 					>
-						<optgroup label="2D">
-							<option value="animation" disabled>{mensage.ProjectType.Animation}</option>
-							<option value="comics" disabled>{mensage.ProjectType.Comics}</option>
-							<option value="draw">{mensage.ProjectType.Draw}</option>
-							<option value="storyBoard" disabled>{mensage.ProjectType.StoryBoard}</option>
-							<option value="svg" disabled>SVG</option>
-						</optgroup>
-						<optgroup label="3D">
-							<option value="modeling" disabled>{mensage.ProjectType.Modeling}</option>
-						</optgroup>
+						<option value="animation" disabled>{mensage.ProjectType.Animation}</option>
+						<option value="comics" disabled>{mensage.ProjectType.Comics}</option>
+						<option value="draw">{mensage.ProjectType.Draw}</option>
+						<option value="storyBoard" disabled>{mensage.ProjectType.StoryBoard}</option>
+						<option value="svg" disabled>SVG</option>
 					</select>
 				</label>
 

@@ -1,4 +1,5 @@
 aside.ToolBoxContainer {
+  max-width: 300px;
   position: absolute;
   top: 0;
   right: 5px;
