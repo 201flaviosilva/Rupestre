@@ -10,6 +10,7 @@ import Pencil from "./Brush/Pencil";
 import Eraser from "./Brush/Eraser";
 import PaintBucket from "./Brush/PaintBucket";
 import ColorPicker from "./Brush/ColorPicker";
+import Line from "./Brush/Line";
 
 import "./Style/Style.css";
 
@@ -36,6 +37,7 @@ export default function ToolBox() {
 				{brush === "Eraser" && <Eraser mensage={mensage.ToolBox} />}
 				{brush === "PaintBucket" && <PaintBucket mensage={mensage.ToolBox} />}
 				{brush === "ColorPicker" && <ColorPicker />}
+				{brush === "Line" && <Line mensage={mensage.ToolBox} />}
 			</div>
 		</aside>
 	)

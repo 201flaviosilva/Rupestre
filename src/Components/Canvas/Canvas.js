@@ -7,6 +7,7 @@ import Pencil from "./BrushesFunctions/Pencil";
 import Eraser from "./BrushesFunctions/Eraser";
 import PaintBucket from "./BrushesFunctions/PaintBucket";
 import ColorPicker from "./BrushesFunctions/ColorPicker";
+import Line from "./BrushesFunctions/Line";
 
 import "./style.css";
 
@@ -42,16 +43,30 @@ export default function Canvas() {
 
 	const [lastPositionX, setLastPositionX] = useState(null);
 	const [lastPositionY, setLastPositionY] = useState(null);
+
 	const [positionX, setPositionX] = useState(null);
 	const [positionY, setPositionY] = useState(null);
+
+	const [startX, setStartX] = useState(null);
+	const [startY, setStartY] = useState(null);
 
 	function getMousePos(evt) {
 		//Get Mouse Position
 		const rect = canvas.getBoundingClientRect();
+
+		const canvasPX = evt.clientX - rect.left;
+		const canvasPY = evt.clientY - rect.top;
+
+		if (!(startX && startY) && mouseDown) {
+			setStartX(canvasPX);
+			setStartY(canvasPY);
+		}
+
 		setLastPositionX(positionX);
 		setLastPositionY(positionY);
-		setPositionX(evt.clientX - rect.left);
-		setPositionY(evt.clientY - rect.top);
+
+		setPositionX(canvasPX);
+		setPositionY(canvasPY);
 	};
 
 	useEffect(() => {
@@ -68,6 +83,10 @@ export default function Canvas() {
 				real: {
 					x: positionX,
 					y: positionY
+				},
+				start: {
+					x: startX,
+					y: startY
 				}
 			};
 			paintBrush(position);
@@ -75,6 +94,7 @@ export default function Canvas() {
 	}, [positionX, positionY]);
 
 	function paintBrush(position) {
+		// console.log(position.start);
 		switch (brush) {
 			case "Pencil":
 				Pencil(ctx, position, bushOptions);
@@ -88,6 +108,9 @@ export default function Canvas() {
 			case "ColorPicker":
 				ColorPicker(canvas, position.real, { colorsPicked, setColorsPicked });
 				break;
+			case "Line":
+				if (mouseDown) Line(canvas, ctx, position, { color, size });
+				break;
 			default:
 				break;
 		}
@@ -95,10 +118,15 @@ export default function Canvas() {
 
 	function leaveCanvas() {
 		setMouseDown(false);
+
 		setLastPositionX(null);
 		setLastPositionY(null);
+
 		setPositionX(null);
 		setPositionY(null);
+
+		setStartX(null);
+		setStartY(null);
 	};
 
 	return (

@@ -5,6 +5,8 @@ import { useProjectValues } from "../../Context/ProjectOptions";
 import lang from "../../Lang/Lang";
 import { Icons } from "../../Managers/Images";
 
+import packageJson from "../../../package.json"
+
 import "./Style.css";
 
 export default function Footer() {
@@ -18,7 +20,7 @@ export default function Footer() {
 
 	return (
 		<footer>
-			<h3>Rupestre</h3>
+			<h3>Rupestre → {packageJson.version}</h3>
 
 			<p>
 				<span title={mensage.Width}>{canvasWidth}px</span>

@@ -20,7 +20,8 @@
     "Pencil": "Lápiz",
     "Eraser": "Borracha",
     "PaintBucket": "Balde de Tinta",
-    "ColorPicker": "Selecionador de Cor"
+    "ColorPicker": "Selecionador de Cor",
+    "Line": "Linha"
   },
   "ToolBox": {
     "Title": "Ferramentas de ",

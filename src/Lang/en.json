@@ -20,7 +20,8 @@
     "Pencil": "Pencil",
     "Eraser": "Eraser",
     "PaintBucket": "Paint Bucket",
-    "ColorPicker": "Color Picker"
+    "ColorPicker": "Color Picker",
+    "Line": "Line"
   },
   "ToolBox": {
     "Title": "ToolBox",
