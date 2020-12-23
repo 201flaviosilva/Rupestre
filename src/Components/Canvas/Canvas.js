@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import { useProjectValues } from "../../Context/ProjectOptions";
+import { useCanvas, useCtx, useCanvasValues } from "../../Context/CanvasOptions";
 import { useBrushValues, useColorsPicked } from "../../Context/BrushOptions";
 
 import Pencil from "./BrushesFunctions/Pencil";
@@ -12,7 +12,7 @@ import Line from "./BrushesFunctions/Line";
 import "./style.css";
 
 export default function Canvas() {
-	const { canvasWidth, canvasHeight } = useProjectValues();
+	const { canvasWidth, canvasHeight } = useCanvasValues();
 	const { brush, color, size, format, colorTolerance } = useBrushValues();
 	const { colorsPicked, setColorsPicked } = useColorsPicked();
 
@@ -23,8 +23,9 @@ export default function Canvas() {
 	}, [color, size, format, colorTolerance]);
 
 	const canvasRef = useRef(null);
-	const [canvas, setCanvas] = useState(null);
-	const [ctx, setCtx] = useState(null);
+	const { canvas, setCanvas } = useCanvas();
+	const { ctx, setCtx } = useCtx();
+
 	useEffect(() => {
 		const c = canvasRef.current;
 		const context = c.getContext("2d");

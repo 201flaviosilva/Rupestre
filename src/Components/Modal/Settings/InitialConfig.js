@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { useName, useProjectType, useCanvasWidth, useCanvasHeight, useLanguage } from "../../../Context/ProjectOptions";
+import { useName, useProjectType, useLanguage } from "../../../Context/ProjectOptions";
+import { useCanvasWidth, useCanvasHeight } from "../../../Context/CanvasOptions";
 
 import lang from "../../../Lang/Lang";
 

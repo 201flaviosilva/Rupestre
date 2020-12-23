@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
 
 import ProjectProvider from "./Context/ProjectOptions";
+import CanvasProvider from "./Context/CanvasOptions";
 import BrushProvider from "./Context/BrushOptions";
 
 import Header from "./Components/Header/Header";
@@ -14,11 +15,13 @@ export default function App() {
   return (
     <>
       <ProjectProvider>
-        <BrushProvider>
-          <Header />
-          <Main />
-          <Footer />
-        </BrushProvider>
+        <CanvasProvider>
+          <BrushProvider>
+            <Header />
+            <Main />
+            <Footer />
+          </BrushProvider>
+        </CanvasProvider>
       </ProjectProvider>
     </>
   );
