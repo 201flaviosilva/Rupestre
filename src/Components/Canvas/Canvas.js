@@ -117,6 +117,9 @@ export default function Canvas() {
 			case "Rectangle":
 				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, paintFill, brush });
 				break;
+			case "Circle":
+				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, paintFill, brush });
+				break;
 			default:
 				break;
 		}

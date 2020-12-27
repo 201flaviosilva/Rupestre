@@ -3,6 +3,7 @@ import ArrowDown from "../Assets/Icons/ArrowDown.svg";
 import ArrowLeft from "../Assets/Icons/ArrowLeft.svg";
 import ArrowRight from "../Assets/Icons/ArrowRight.svg";
 import ArrowUp from "../Assets/Icons/ArrowUp.svg";
+import Circle from "../Assets/Icons/Circle.svg";
 import ColorPicker from "../Assets/Icons/ColorPicker.svg";
 import Eraser from "../Assets/Icons/Eraser.svg";
 import Line from "../Assets/Icons/Line.png";
@@ -17,6 +18,7 @@ export const Icons = {
 	ArrowLeft,
 	ArrowRight,
 	ArrowUp,
+	Circle,
 	ColorPicker,
 	Eraser,
 	Line,

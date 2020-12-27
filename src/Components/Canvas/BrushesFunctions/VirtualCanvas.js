@@ -78,6 +78,9 @@ function draw(ctx) {
 		case "Rectangle":
 			drawRect(ctx);
 			break;
+		case "Circle":
+			drawCircle(ctx);
+			break;
 		default:
 			break;
 	}
@@ -105,6 +108,31 @@ function drawRect(ctx) {
 		ctx.stroke();
 	} else {
 		ctx.fillStyle = color;
+		ctx.lineWidth = 0;
 		ctx.fillRect(startPosit.x, startPosit.y, realPosit.x, realPosit.y);
+	}
+}
+
+function drawCircle(ctx) {
+	const { color, size, paintFill } = bushOptions;
+
+	const rX = startPosit.x - realPosit.x;
+	const rY = startPosit.y - realPosit.y;
+
+	const r = rX < rY ? rX : rY;
+	const radius = r > 1 ? r : 1;
+
+	if (!paintFill) {
+		ctx.beginPath();
+		ctx.strokeStyle = color;
+		ctx.lineWidth = size;
+		ctx.arc(startPosit.x, startPosit.y, radius, 0, 2 * Math.PI);
+		ctx.stroke();
+	} else {
+		ctx.beginPath();
+		ctx.fillStyle = color;
+		ctx.lineWidth = 0;
+		ctx.arc(startPosit.x, startPosit.y, radius, 0, 2 * Math.PI);
+		ctx.fill();
 	}
 }

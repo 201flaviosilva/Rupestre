@@ -12,6 +12,7 @@ import PaintBucket from "./Brush/PaintBucket";
 import ColorPicker from "./Brush/ColorPicker";
 import Line from "./Brush/Line";
 import Rectangle from "./Brush/Rectangle";
+import Circle from "./Brush/Circle";
 
 import "./Style/Style.css";
 
@@ -40,6 +41,7 @@ export default function ToolBox() {
 				{brush === "ColorPicker" && <ColorPicker />}
 				{brush === "Line" && <Line mensage={mensage.ToolBox} />}
 				{brush === "Rectangle" && <Rectangle mensage={mensage.ToolBox} />}
+				{brush === "Circle" && <Rectangle mensage={mensage.ToolBox} />}
 			</div>
 		</aside>
 	)

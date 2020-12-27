@@ -7,8 +7,7 @@
       "Animation": "Animação",
       "Comics": "Banda Desenhada",
       "Draw": "Desenho",
-      "StoryBoard": "Story Board",
-      "Modeling": "Modelagem"
+      "StoryBoard": "Story Board"
     },
     "NameInput": "Nome do Projeto",
     "WidthInput": "Largura",
@@ -22,7 +21,8 @@
     "PaintBucket": "Balde de Tinta",
     "ColorPicker": "Selecionador de Cor",
     "Line": "Linha",
-    "Rectangle": "Retângulo"
+    "Rectangle": "Retângulo",
+    "Circle": "Círculo"
   },
   "ToolBox": {
     "Title": "Ferramentas de ",

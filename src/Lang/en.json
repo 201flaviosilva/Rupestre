@@ -7,8 +7,7 @@
       "Animation": "Animation",
       "Comics": "Comics",
       "Draw": "Draw",
-      "StoryBoard": "Story Board",
-      "Modeling": "Modeling"
+      "StoryBoard": "Story Board"
     },
     "NameInput": "Project Nome",
     "WidthInput": "Width",
@@ -22,7 +21,8 @@
     "PaintBucket": "Paint Bucket",
     "ColorPicker": "Color Picker",
     "Line": "Line",
-    "Rectangle": "Rectangle"
+    "Rectangle": "Rectangle",
+    "Circle": "Circle"
   },
   "ToolBox": {
     "Title": "ToolBox",
