@@ -44,32 +44,38 @@ function cerateCanvas() {
 	addEvents();
 }
 
-function drawLine(ctx) {
-	const { color, size } = bushOptions;
-
-	ctx.strokeStyle = color;
-	ctx.lineWidth = size;
-	ctx.beginPath();
-	ctx.moveTo(startPosit.x, startPosit.y);
-	ctx.lineTo(realPosit.x, realPosit.y);
-	ctx.stroke();
-}
-
 function addEvents() {
-	virtualCanvas.addEventListener("onmouseover", () => {
+	virtualCanvas.addEventListener("mousemove", evt => {
 		const { width, height } = canvas;
+
 		virtualCtx.clearRect(0, 0, width, height);
+		getRealPositions(evt);
 		drawLine(virtualCtx);
 	});
 
-	virtualCanvas.addEventListener("mouseup", (evt) => {
+	virtualCanvas.addEventListener("mouseup", evt => {
+		getRealPositions(evt);
+
+		drawLine(realCtx);
+		virtualCanvas.remove();
+	});
+
+	function getRealPositions(evt) {
 		const { top, left } = virtualCanvas.getBoundingClientRect();
 		const canvasPX = evt.clientX - left;
 		const canvasPY = evt.clientY - top;
 
 		realPosit = { x: canvasPX, y: canvasPY };
+	}
+}
 
-		drawLine(realCtx);
-		virtualCanvas.remove();
-	});
+function drawLine(ctx) {
+	const { color, size } = bushOptions;
+
+	ctx.beginPath();
+	ctx.strokeStyle = color;
+	ctx.lineWidth = size;
+	ctx.moveTo(startPosit.x, startPosit.y);
+	ctx.lineTo(realPosit.x, realPosit.y);
+	ctx.stroke();
 }
