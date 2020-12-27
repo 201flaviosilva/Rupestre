@@ -46,7 +46,11 @@
       "Label": "Tolerancia de Cor",
       "Title": "Tolerancia de Cor"
     },
-    "Clear": "Limpar Tela"
+    "Clear": "Limpar Tela",
+    "PaintFill": {
+      "Fill": "Preencher",
+      "Stroke": "Borda"
+    }
   },
   "Footer": {
     "Width": "Largura",

@@ -6,7 +6,7 @@ export default function ColorTolerance({ mensage }) {
 	const { colorTolerance, setColorTolerance } = useColorTolerance();
 	return (
 		<label
-			htmlFor="size"
+			htmlFor="ColorTolerance"
 			title={mensage.Title}
 		>
 			{mensage.Label}:0

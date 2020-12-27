@@ -46,7 +46,11 @@
       "Label": "Color Tolerance",
       "Title": "Color Tolerance"
     },
-    "Clear": "Clear Canvas"
+    "Clear": "Clear Canvas",
+    "PaintFill": {
+      "Fill": "Fill",
+      "Stroke": "Stroke(Border)"
+    }
   },
   "Footer": {
     "Width": "Width",

@@ -7,14 +7,15 @@ import Pencil from "./BrushesFunctions/Pencil";
 import Eraser from "./BrushesFunctions/Eraser";
 import PaintBucket from "./BrushesFunctions/PaintBucket";
 import ColorPicker from "./BrushesFunctions/ColorPicker";
-import Line from "./BrushesFunctions/Line";
-import Rectangle from "./BrushesFunctions/Rectangle";
+import VirtualCanvas from "./BrushesFunctions/VirtualCanvas";
+// import Line from "./BrushesFunctions/Line";
+// import Rectangle from "./BrushesFunctions/Rectangle";
 
 import "./style.css";
 
 export default function Canvas() {
 	const { canvasWidth, canvasHeight } = useCanvasValues();
-	const { brush, color, size, format, colorTolerance } = useBrushValues();
+	const { brush, color, size, format, colorTolerance, paintFill } = useBrushValues();
 	const { colorsPicked, setColorsPicked } = useColorsPicked();
 
 	const [bushOptions, setBushOptions] = useState({ color, size, format });
@@ -111,10 +112,10 @@ export default function Canvas() {
 				ColorPicker(canvas, position.real, { colorsPicked, setColorsPicked });
 				break;
 			case "Line":
-				if (mouseDown) Line(canvas, ctx, position, { color, size });
+				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, brush });
 				break;
 			case "Rectangle":
-				if (mouseDown) Rectangle(canvas, ctx, position, { color, size });
+				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, paintFill, brush });
 				break;
 			default:
 				break;
