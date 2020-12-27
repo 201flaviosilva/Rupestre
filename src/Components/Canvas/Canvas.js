@@ -8,6 +8,7 @@ import Eraser from "./BrushesFunctions/Eraser";
 import PaintBucket from "./BrushesFunctions/PaintBucket";
 import ColorPicker from "./BrushesFunctions/ColorPicker";
 import Line from "./BrushesFunctions/Line";
+import Rectangle from "./BrushesFunctions/Rectangle";
 
 import "./style.css";
 
@@ -53,10 +54,10 @@ export default function Canvas() {
 
 	function getMousePos(evt) {
 		//Get Mouse Position
-		const rect = canvas.getBoundingClientRect();
+		const { top, left } = canvas.getBoundingClientRect();
 
-		const canvasPX = evt.clientX - rect.left;
-		const canvasPY = evt.clientY - rect.top;
+		const canvasPX = evt.clientX - left;
+		const canvasPY = evt.clientY - top;
 
 		if (!(startX && startY) && mouseDown) {
 			setStartX(canvasPX);
@@ -111,6 +112,9 @@ export default function Canvas() {
 				break;
 			case "Line":
 				if (mouseDown) Line(canvas, ctx, position, { color, size });
+				break;
+			case "Rectangle":
+				if (mouseDown) Rectangle(canvas, ctx, position, { color, size });
 				break;
 			default:
 				break;

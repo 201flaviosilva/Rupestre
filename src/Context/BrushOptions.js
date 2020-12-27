@@ -5,7 +5,7 @@ const BrushContext = createContext();
 export default function BrushProvider({ children }) {
 	const [brush, setBrush] = useState("Pencil");
 	const [color, setColor] = useState("#ff0000");
-	const [size, setSize] = useState(100);
+	const [size, setSize] = useState(20);
 	const [format, setFormat] = useState("Square");
 	const [colorsPicked, setColorsPicked] = useState([]);
 	const [colorTolerance, setColorTolerance] = useState(5);

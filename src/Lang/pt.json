@@ -21,7 +21,8 @@
     "Eraser": "Borracha",
     "PaintBucket": "Balde de Tinta",
     "ColorPicker": "Selecionador de Cor",
-    "Line": "Linha"
+    "Line": "Linha",
+    "Rectangle": "Retângulo"
   },
   "ToolBox": {
     "Title": "Ferramentas de ",

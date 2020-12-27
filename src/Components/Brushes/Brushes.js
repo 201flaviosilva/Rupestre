@@ -15,7 +15,7 @@ import "./Style/Style.css";
 
 export default function Brushes() {
 	const { setBrush } = useBrush();
-	const brushes2D = ["Pencil", "Eraser", "PaintBucket", "ColorPicker", "Line"];
+	const brushes2D = ["Pencil", "Eraser", "PaintBucket", "ColorPicker", "Line", "Rectangle"];
 
 	const { language } = useLanguage();
 

@@ -21,7 +21,8 @@
     "Eraser": "Eraser",
     "PaintBucket": "Paint Bucket",
     "ColorPicker": "Color Picker",
-    "Line": "Line"
+    "Line": "Line",
+    "Rectangle": "Rectangle"
   },
   "ToolBox": {
     "Title": "ToolBox",

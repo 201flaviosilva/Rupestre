@@ -11,6 +11,7 @@ import Eraser from "./Brush/Eraser";
 import PaintBucket from "./Brush/PaintBucket";
 import ColorPicker from "./Brush/ColorPicker";
 import Line from "./Brush/Line";
+import Rectangle from "./Brush/Rectangle";
 
 import "./Style/Style.css";
 
@@ -38,6 +39,7 @@ export default function ToolBox() {
 				{brush === "PaintBucket" && <PaintBucket mensage={mensage.ToolBox} />}
 				{brush === "ColorPicker" && <ColorPicker />}
 				{brush === "Line" && <Line mensage={mensage.ToolBox} />}
+				{brush === "Rectangle" && <Rectangle mensage={mensage.ToolBox} />}
 			</div>
 		</aside>
 	)
