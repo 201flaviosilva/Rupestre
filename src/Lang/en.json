@@ -22,7 +22,8 @@
     "ColorPicker": "Color Picker",
     "Line": "Line",
     "Rectangle": "Rectangle",
-    "Circle": "Circle"
+    "Circle": "Circle",
+    "Text": "Text"
   },
   "ToolBox": {
     "Title": "ToolBox",
@@ -50,6 +51,12 @@
     "PaintFill": {
       "Fill": "Fill",
       "Stroke": "Stroke(Border)"
+    },
+    "Text": {
+      "Label": "Text"
+    },
+    "FontFamily": {
+      "Label": "Family"
     }
   },
   "Footer": {

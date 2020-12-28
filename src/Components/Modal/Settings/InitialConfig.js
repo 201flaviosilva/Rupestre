@@ -50,6 +50,7 @@ export default function InitialConfig() {
 						<option value="animation" disabled>{mensage.ProjectType.Animation}</option>
 						<option value="comics" disabled>{mensage.ProjectType.Comics}</option>
 						<option value="draw">{mensage.ProjectType.Draw}</option>
+						<option value="pixelArt" disabled>Pixel Art</option>
 						<option value="storyBoard" disabled>{mensage.ProjectType.StoryBoard}</option>
 						<option value="svg" disabled>SVG</option>
 					</select>

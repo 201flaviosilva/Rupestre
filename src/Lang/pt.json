@@ -22,7 +22,8 @@
     "ColorPicker": "Selecionador de Cor",
     "Line": "Linha",
     "Rectangle": "Retângulo",
-    "Circle": "Círculo"
+    "Circle": "Círculo",
+    "Text": "Texto"
   },
   "ToolBox": {
     "Title": "Ferramentas de ",
@@ -50,6 +51,12 @@
     "PaintFill": {
       "Fill": "Preencher",
       "Stroke": "Borda"
+    },
+    "Text": {
+      "Label": "Texto"
+    },
+    "FontFamily": {
+      "Label": "Familia"
     }
   },
   "Footer": {

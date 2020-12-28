@@ -10,19 +10,14 @@ import ColorPicker from "./BrushesFunctions/ColorPicker";
 import VirtualCanvas from "./BrushesFunctions/VirtualCanvas";
 // import Line from "./BrushesFunctions/Line";
 // import Rectangle from "./BrushesFunctions/Rectangle";
+import Text from "./BrushesFunctions/Text";
 
 import "./style.css";
 
 export default function Canvas() {
 	const { canvasWidth, canvasHeight } = useCanvasValues();
-	const { brush, color, size, format, colorTolerance, paintFill } = useBrushValues();
+	const { brush, color, size, format, colorTolerance, paintFill, text, fontFamily } = useBrushValues();
 	const { colorsPicked, setColorsPicked } = useColorsPicked();
-
-	const [bushOptions, setBushOptions] = useState({ color, size, format });
-
-	useEffect(() => {
-		setBushOptions({ color, size, format, colorTolerance });
-	}, [color, size, format, colorTolerance]);
 
 	const canvasRef = useRef(null);
 	const { canvas, setCanvas } = useCanvas();
@@ -100,25 +95,28 @@ export default function Canvas() {
 		// console.log(position.start);
 		switch (brush) {
 			case "Pencil":
-				Pencil(ctx, position, bushOptions);
+				Pencil(ctx, position, { color, size, format });
 				break;
 			case "Eraser":
 				Eraser(ctx, position.actual, size);
 				break;
 			case "PaintBucket":
-				PaintBucket(canvas, ctx, position.real, bushOptions);
+				PaintBucket(canvas, ctx, position.real, { color, colorTolerance });
 				break;
 			case "ColorPicker":
 				ColorPicker(canvas, position.real, { colorsPicked, setColorsPicked });
 				break;
 			case "Line":
-				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, brush });
+				if (mouseDown) VirtualCanvas(canvas, ctx, position.start, { color, size, brush });
 				break;
 			case "Rectangle":
-				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, paintFill, brush });
+				if (mouseDown) VirtualCanvas(canvas, ctx, position.start, { color, size, paintFill, brush });
 				break;
 			case "Circle":
-				if (mouseDown) VirtualCanvas(canvas, ctx, position, { color, size, paintFill, brush });
+				if (mouseDown) VirtualCanvas(canvas, ctx, position.start, { color, size, paintFill, brush });
+				break;
+			case "Text":
+				Text(ctx, position.real, { color, size, text, fontFamily });
 				break;
 			default:
 				break;

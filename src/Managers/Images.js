@@ -11,6 +11,7 @@ import PaintBucket from "../Assets/Icons/PaintBucket.svg";
 import Pencil from "../Assets/Icons/Pencil.svg";
 import Rectangle from "../Assets/Icons/Rectangle.svg";
 import Settings from "../Assets/Icons/Settings.svg";
+import Text from "../Assets/Icons/Text.svg";
 import XImage from "../Assets/Icons/x.svg";
 
 export const Icons = {
@@ -26,6 +27,7 @@ export const Icons = {
 	Pencil,
 	Rectangle,
 	Settings,
+	Text,
 	XImage
 };
 

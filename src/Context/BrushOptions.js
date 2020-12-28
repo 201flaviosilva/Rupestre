@@ -10,6 +10,8 @@ export default function BrushProvider({ children }) {
 	const [colorsPicked, setColorsPicked] = useState([]);
 	const [colorTolerance, setColorTolerance] = useState(5);
 	const [paintFill, setPaintFill] = useState(false);
+	const [text, setText] = useState("Text");
+	const [fontFamily, setFontFamily] = useState("Serif");
 
 	return (
 		<BrushContext.Provider value={{
@@ -19,7 +21,9 @@ export default function BrushProvider({ children }) {
 			format, setFormat,
 			colorsPicked, setColorsPicked,
 			colorTolerance, setColorTolerance,
-			paintFill, setPaintFill
+			paintFill, setPaintFill,
+			text, setText,
+			fontFamily, setFontFamily
 		}}>
 			{children}
 		</BrushContext.Provider>
@@ -68,9 +72,20 @@ export function usePaintFill() {
 	return { paintFill, setPaintFill };
 };
 
+export function useText() {
+	const context = useContext(BrushContext);
+	const { text, setText } = context;
+	return { text, setText };
+};
+
+export function useFontFamily() {
+	const context = useContext(BrushContext);
+	const { fontFamily, setFontFamily } = context;
+	return { fontFamily, setFontFamily };
+};
 
 export function useBrushValues() {
 	const context = useContext(BrushContext);
-	const { brush, color, size, format, colorsPicked, colorTolerance, paintFill } = context;
-	return { brush, color, size, format, colorsPicked, colorTolerance, paintFill };
+	const { brush, color, size, format, colorsPicked, colorTolerance, paintFill, text, fontFamily } = context;
+	return { brush, color, size, format, colorsPicked, colorTolerance, paintFill, text, fontFamily };
 };

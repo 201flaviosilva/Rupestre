@@ -15,7 +15,7 @@ export default function VirtualCanvas(c, context, position, brushOpt) {
 	virtualCtx = null;
 
 	canvas = c;
-	startPosit = position.start;
+	startPosit = position;
 	realCtx = context;
 	bushOptions = brushOpt;
 
