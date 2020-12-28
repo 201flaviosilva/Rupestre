@@ -1,6 +1,6 @@
 # Rupestre
 
-A Creative App;
+A app for your creativity;
 
 ## Other Languages
 | Language      |              Link              |

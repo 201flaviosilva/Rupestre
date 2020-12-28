@@ -1,4 +1,5 @@
 import convert from "color-convert";
+
 export default function convertColor(color) {
 	color = String(color).toLowerCase();
 
@@ -15,8 +16,10 @@ export default function convertColor(color) {
 		color = color.replace("hsl", "").replace("(", "").replace(")", "").replace(" ", "").split(",");
 		color = "#" + convert.hsl.hex(color);
 		// console.log("hsl");
+
 	} else {
 		console.log("Fail!!");
 	}
+
 	return color;
 }
