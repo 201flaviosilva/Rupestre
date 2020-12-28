@@ -64,8 +64,8 @@ function addEvents() {
 
 function getRealPositions(evt) {
 	const { top, left } = virtualCanvas.getBoundingClientRect();
-	const canvasPX = (evt.clientX - left) - startPosit.x;
-	const canvasPY = (evt.clientY - top) - startPosit.y;
+	const canvasPX = (evt.clientX - left);
+	const canvasPY = (evt.clientY - top);
 
 	realPosit = { x: canvasPX, y: canvasPY };
 }
@@ -100,6 +100,9 @@ function drawLine(ctx) {
 function drawRect(ctx) {
 	const { color, size, paintFill } = bushOptions;
 
+	realPosit.x -= startPosit.x;
+	realPosit.y -= startPosit.y;
+
 	if (!paintFill) {
 		ctx.beginPath();
 		ctx.strokeStyle = color;
@@ -115,6 +118,9 @@ function drawRect(ctx) {
 
 function drawCircle(ctx) {
 	const { color, size, paintFill } = bushOptions;
+
+	realPosit.x -= startPosit.x;
+	realPosit.y -= startPosit.y;
 
 	const rX = startPosit.x - realPosit.x;
 	const rY = startPosit.y - realPosit.y;
