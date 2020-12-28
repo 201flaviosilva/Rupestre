@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { useLanguage } from "../../Context/ProjectOptions";
+import { useProjectValues, useModalTitle } from "../../Context/ProjectOptions";
 import { useCanvasValues } from "../../Context/CanvasOptions";
 
 import lang from "../../Lang/Lang";
@@ -11,7 +11,8 @@ import packageJson from "../../../package.json"
 import "./Style.css";
 
 export default function Footer() {
-	const { language } = useLanguage();
+	const { language } = useProjectValues();
+	const { setModalTitle } = useModalTitle();
 	const { canvasWidth, canvasHeight } = useCanvasValues();
 
 	const [mensage, setMensage] = useState(lang[language].Footer);
@@ -30,7 +31,9 @@ export default function Footer() {
 				<span title={mensage.Height}>{canvasHeight}px</span>
 			</p>
 
-			<button>
+			<button
+				onClick={() => setModalTitle("Settings")}
+			>
 				<img
 					src={Icons.Settings}
 					alt={mensage.Settings}

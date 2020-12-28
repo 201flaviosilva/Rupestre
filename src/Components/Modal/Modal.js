@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
+
+import { useModalTitle } from "../../Context/ProjectOptions";
 
 import { Icons } from "../../Managers/Images";
 
-import "./Style/Style.css"
+import Settings from "./Settings/Settings";
 
-export default function Modal({ title, children }) {
-	const [visible, setVisible] = useState(true);
+import "./Style/Style.css";
+
+export default function Modal() {
+	const { modalTitle, setModalTitle } = useModalTitle();
+
 	return (
-		<div className="modalContainerAll" style={visible ? { display: "grid" } : { display: "none" }}>
+		<div className="modalContainerAll" style={modalTitle ? { display: "grid" } : { display: "none" }}>
 			<div className="modalContainer">
 				<div className="Header">
-					<h2>{title}</h2>
+					<h2>{modalTitle}</h2>
 					<button
-						onClick={() => setVisible(false)}
+						onClick={() => setModalTitle("")}
 					>
 						<img src={Icons.XImage} alt="Close" />
 					</button>
 				</div>
 
 				<div className="Main">
-					{children}
+					{modalTitle === "Settings" && <Settings />}
 				</div>
 			</div>
 		</div>

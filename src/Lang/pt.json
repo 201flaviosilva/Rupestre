@@ -1,6 +1,6 @@
 {
-  "InitialConfig": {
-    "Title": "Configurações Iniciais",
+  "Settings": {
+    "Title": "Configurações",
     "ProjectType": {
       "Label": "Tipo de Projeto",
       "Title": "Tipo de Projeto",

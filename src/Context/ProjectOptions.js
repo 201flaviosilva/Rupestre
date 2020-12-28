@@ -17,12 +17,16 @@ export default function ProjectProvider({ children }) {
 
 	const [name, setName] = useState("Unnamed - Rupestre");
 	const [projectType, setProjectType] = useState("draw");
+	const [modalTitle, setModalTitle] = useState("");
+
+	useEffect(() => { console.log(modalTitle); }, [modalTitle])
 
 	return (
 		<ProjectContext.Provider value={{
 			name, setName,
 			projectType, setProjectType,
-			language, setLanguage
+			language, setLanguage,
+			modalTitle, setModalTitle
 		}}>
 			{children}
 		</ProjectContext.Provider>
@@ -47,8 +51,14 @@ export function useLanguage() {
 	return { language, setLanguage };
 };
 
+export function useModalTitle() {
+	const context = useContext(ProjectContext);
+	const { modalTitle, setModalTitle } = context;
+	return { modalTitle, setModalTitle };
+};
+
 export function useProjectValues() {
 	const context = useContext(ProjectContext);
-	const { name, projectType, language } = context;
-	return { name, projectType, language };
+	const { name, projectType, language, modalTitle } = context;
+	return { name, projectType, language, modalTitle };
 }
