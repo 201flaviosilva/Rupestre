@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { useName, useProjectType, useLanguage } from "../../../Context/ProjectOptions";
-import { useCanvasWidth, useCanvasHeight } from "../../../Context/CanvasOptions";
+import { useCanvasWidth, useCanvasHeight, useCanvasValues } from "../../../Context/CanvasOptions";
 
 import lang from "../../../Lang/Lang";
 
@@ -12,6 +12,7 @@ export default function Settings() {
 	const { projectType, setProjectType } = useProjectType();
 	const { canvasWidth, setCanvasWidth } = useCanvasWidth();
 	const { canvasHeight, setCanvasHeight } = useCanvasHeight();
+	const { canvas } = useCanvasValues();
 
 	const { language, setLanguage } = useLanguage();
 
@@ -20,6 +21,16 @@ export default function Settings() {
 	useEffect(() => {
 		setMensage(lang[language].Settings);
 	}, [language]);
+
+
+	const [dataURLJPG, setDataURLJPG] = useState();
+	const [dataURLPNG, setDataURLPNG] = useState();
+	useEffect(() => {
+		if (canvas) {
+			setDataURLPNG(() => canvas.toDataURL('image/png'));
+			setDataURLJPG(() => canvas.toDataURL('image/jpeg'));
+		};
+	}, [canvas]);
 
 	return (
 		<div className="SettingsContainer">
@@ -89,6 +100,23 @@ export default function Settings() {
 					<option value="pt">Portugês</option>
 				</select>
 			</label>
+
+			<div className="Export">
+				<h3>Export</h3>
+				<a
+					href={dataURLJPG}
+					download={`${name}.jpg`}
+				>
+					{name}.jpg
+					</a>
+				<a
+					href={dataURLPNG}
+					download={`${name}.png`}
+				>
+					{name}.png
+					</a>
+			</div>
+
 		</div>
 	)
 }
