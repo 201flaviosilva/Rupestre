@@ -34,7 +34,3 @@ aside.ToolBoxContainer div.ToolBoxMain label {
   display: flex;
   align-items: center;
 }
-
-aside.ToolBoxContainer div.ToolBoxMain label span.mensage {
-  width: 75px;
-}
