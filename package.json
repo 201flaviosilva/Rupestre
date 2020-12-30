@@ -6,7 +6,7 @@
   "author": "Flávio Silva",
   "license": "MIT",
   "keywords": [],
-  "homepage": "http://201flaviosilva.github.io/rupestre",
+  "homepage": "http://201flaviosilva.github.io/Rupestre",
   "dependencies": {
     "color-convert": "^2.0.1",
     "get-canvas-pixel-color": "^2.0.1",
