@@ -1,4 +1,4 @@
-{
+const pt = {
   "Settings": {
     "Title": "Configurações",
     "ProjectType": {
@@ -65,3 +65,5 @@
     "Settings": "Definições"
   }
 }
+
+export default pt;
