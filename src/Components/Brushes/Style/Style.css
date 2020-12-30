@@ -1,6 +1,6 @@
 aside.BrushesContainer {
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 5px;
   padding: 5px;
   border: 1px solid black;
@@ -9,17 +9,39 @@ aside.BrushesContainer {
 
 aside.BrushesContainer div.BrushesHeader {
   display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid black;
 }
 
 aside.BrushesContainer ul {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, auto);
   padding: 5px;
   gap: 5px;
 }
 
+aside.BrushesContainer ul li button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+
+aside.BrushesContainer ul li button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 2px black;
+}
+
+aside.BrushesContainer ul li button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 4px black;
+}
+
 aside.BrushesContainer ul li button img {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }

@@ -5,7 +5,8 @@ import { useColor } from "../../../Context/BrushOptions";
 export default function ColorInput({ mensage }) {
 	const { color, setColor } = useColor();
 	return (
-		<label htmlFor="color">{mensage.Label}:
+		<label htmlFor="color">
+			<span className="mensage">{mensage.Label}:</span>
 			<input
 				id="color"
 				type="color"

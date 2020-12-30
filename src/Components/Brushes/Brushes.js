@@ -14,7 +14,7 @@ import HideButton from "../HideButton/HideButton";
 import "./Style/Style.css";
 
 export default function Brushes() {
-	const { setBrush } = useBrush();
+	const { brush, setBrush } = useBrush();
 	const brushes2D = ["Pencil", "Eraser", "PaintBucket", "ColorPicker", "Line", "Rectangle", "Circle", "Text"];
 
 	const { language } = useLanguage();
@@ -27,6 +27,9 @@ export default function Brushes() {
 
 	const [visible, setVisible] = useState(true);
 
+	const styleTrue = { backgroundColor: "#90defd" };
+	const styleFalse = { backgroundColor: "white" };
+
 	return (
 		<aside className="BrushesContainer">
 			<div className="BrushesHeader">
@@ -35,14 +38,15 @@ export default function Brushes() {
 			</div>
 
 			<ul style={visible ? { display: "grid" } : { display: "none" }}>
-				{brushes2D.map(b =>
+				{brushes2D.map((b, index) =>
 					<li key={b}>
 						<button
 							title={mensage[b]}
 							onClick={() => setBrush(b)}
+							style={brush === b ? styleTrue : styleFalse}
 						>
 							<img src={Icons[b]} alt={b} />
-							<span> {mensage[b]} </span>
+							{/* <span> {mensage[b]} </span> */}
 						</button>
 					</li>
 				)}

@@ -5,8 +5,9 @@ import { useSize } from "../../../Context/BrushOptions";
 export default function SizeInput({ mensage }) {
 	const { size, setSize } = useSize();
 	return (
-		<label htmlFor="size">{mensage.Label}:
-				1 <input
+		<label htmlFor="size">
+			<span className="mensage">{mensage.Label}:</span>
+			<input
 				id="size"
 				type="range"
 				title={mensage.Title}
@@ -15,7 +16,7 @@ export default function SizeInput({ mensage }) {
 				value={size}
 				onChange={(e) => setSize(e.target.value)}
 			/>
-				100 [{size}]
+			<span className="value">[{size}]</span>
 		</label>
 	)
 }

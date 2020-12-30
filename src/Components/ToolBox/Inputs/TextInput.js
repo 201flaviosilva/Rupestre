@@ -9,7 +9,7 @@ export default function TextInput({ mensage }) {
 			htmlFor="text"
 			title={mensage.Title}
 		>
-			{mensage.Label}:
+			<span className="mensage">{mensage.Label}:</span>
 			<input
 				id="text"
 				type="text"

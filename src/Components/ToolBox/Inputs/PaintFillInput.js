@@ -6,7 +6,7 @@ export default function PaintFillInput({ mensage }) {
 	const { paintFill, setPaintFill } = usePaintFill();
 
 	return (
-		<div onChange={() => setPaintFill(!paintFill)}>
+		<div onChange={() => setPaintFill(!paintFill)} className="StrokeFillContainer">
 			<label htmlFor="Stroke">
 				<input
 					type="radio"
@@ -15,7 +15,7 @@ export default function PaintFillInput({ mensage }) {
 					value="false"
 					defaultChecked={!paintFill}
 				/>
-				{mensage.Stroke}
+				<span>{mensage.Stroke}</span>
 			</label>
 
 			<label htmlFor="Fill">
@@ -26,7 +26,7 @@ export default function PaintFillInput({ mensage }) {
 					value="true"
 					defaultChecked={paintFill}
 				/>
-				{mensage.Fill}
+				<span>{mensage.Fill}</span>
 			</label>
 		</div>
 	)

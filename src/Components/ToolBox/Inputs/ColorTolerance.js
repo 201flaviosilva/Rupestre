@@ -9,7 +9,7 @@ export default function ColorTolerance({ mensage }) {
 			htmlFor="ColorTolerance"
 			title={mensage.Title}
 		>
-			{mensage.Label}:0
+			<span className="mensage">{mensage.Label}:</span>
 			<input
 				id="ColorTolerance"
 				type="range"
@@ -18,7 +18,7 @@ export default function ColorTolerance({ mensage }) {
 				value={colorTolerance}
 				onChange={(e) => setColorTolerance(e.target.value)}
 			/>
-				150 [{colorTolerance}]
+       [{colorTolerance}]
 		</label>
 	)
 }
