@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 import { useLanguage } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 

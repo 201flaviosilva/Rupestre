@@ -3,13 +3,13 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const ProjectContext = createContext();
 
 export default function ProjectProvider({ children }) {
+	const [language, setLanguage] = useState("en");
+
 	useEffect(() => {
 		if (!localStorage.getItem("lang")) {
-			localStorage.setItem("lang", "pt");
+			localStorage.setItem("lang", "en");
 		}
 	});
-
-	const [language, setLanguage] = useState(localStorage.getItem("lang"));
 
 	useEffect(() => {
 		localStorage.setItem("lang", language);
