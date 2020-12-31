@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { useLanguage } from "../../Context/ProjectOptions";
+import { useTranslation } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 
-import lang from "../../Lang/Lang";
 import { Icons } from "../../Managers/Images";
 
 // import Pencil from "./Pencil/Pencil";
@@ -16,13 +15,13 @@ export default function Brushes() {
 	const { brush, setBrush } = useBrush();
 	const brushes2D = ["Pencil", "Eraser", "PaintBucket", "ColorPicker", "Line", "Rectangle", "Circle", "Text"];
 
-	const { language } = useLanguage();
+	const { translation } = useTranslation();
 
-	const [mensage, setMensage] = useState(lang[language].Brushes);
+	const [mensage, setMensage] = useState(translation.Brushes);
 
 	useEffect(() => {
-		setMensage(lang[language].Brushes);
-	}, [language]);
+		setMensage(translation.Brushes);
+	}, [translation]);
 
 	const [visible, setVisible] = useState(true);
 

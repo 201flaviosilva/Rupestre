@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { useName, useProjectType, useLanguage } from "../../../Context/ProjectOptions";
+import { useName, useProjectType, useLanguage, useTranslation } from "../../../Context/ProjectOptions";
 import { useCanvasWidth, useCanvasHeight, useCanvasValues } from "../../../Context/CanvasOptions";
-
-import lang from "../../../Lang/Lang";
 
 import "./Style/Style.css";
 
@@ -15,12 +13,13 @@ export default function Settings() {
 	const { canvas } = useCanvasValues();
 
 	const { language, setLanguage } = useLanguage();
+	const { translation } = useTranslation();
 
-	const [mensage, setMensage] = useState(lang[language].Settings);
+	const [mensage, setMensage] = useState(translation.Settings);
 
 	useEffect(() => {
-		setMensage(lang[language].Settings);
-	}, [language]);
+		setMensage(translation.Settings);
+	}, [translation]);
 
 
 	const [dataURLJPG, setDataURLJPG] = useState();

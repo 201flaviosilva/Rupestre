@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+import lang from "../Lang/Lang";
+
 const ProjectContext = createContext();
 
 export default function ProjectProvider({ children }) {
 	const [language, setLanguage] = useState("en");
+	const [translation, setTranslation] = useState(lang[language]);
 
 	useEffect(() => {
 		if (!localStorage.getItem("lang")) {
@@ -13,6 +16,7 @@ export default function ProjectProvider({ children }) {
 
 	useEffect(() => {
 		localStorage.setItem("lang", language);
+		setTranslation(lang[language]);
 	}, [language]);
 
 	const [name, setName] = useState("Unnamed - Rupestre");
@@ -23,9 +27,10 @@ export default function ProjectProvider({ children }) {
 
 	return (
 		<ProjectContext.Provider value={{
+			language, setLanguage,
+			translation, setTranslation,
 			name, setName,
 			projectType, setProjectType,
-			language, setLanguage,
 			modalTitle, setModalTitle
 		}}>
 			{children}
@@ -57,8 +62,14 @@ export function useModalTitle() {
 	return { modalTitle, setModalTitle };
 };
 
+export function useTranslation() {
+	const context = useContext(ProjectContext);
+	const { translation, setTranslation } = context;
+	return { translation, setTranslation };
+};
+
 export function useProjectValues() {
 	const context = useContext(ProjectContext);
-	const { name, projectType, language, modalTitle } = context;
-	return { name, projectType, language, modalTitle };
+	const { name, projectType, language, modalTitle, translation } = context;
+	return { name, projectType, language, modalTitle, translation };
 }
