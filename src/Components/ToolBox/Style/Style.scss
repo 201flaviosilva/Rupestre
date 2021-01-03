@@ -6,13 +6,16 @@ aside.ToolBoxContainer {
   padding: 5px;
   border: 1px solid black;
   border-radius: 2px;
+  @media only screen and (max-width: 450px) {
+    max-width: 200px;
+  }
   div.ToolBoxHeader {
     display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid black;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 450px) {
       h2 {
-        writing-mode: vertical-rl;
-        text-orientation: sideways-right;
+        font-size: 20px;
       }
     }
   }
@@ -24,15 +27,42 @@ aside.ToolBoxContainer {
         display: flex;
         flex-direction: column;
       }
+      &.ColorsPickerList {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 85px);
+      }
     }
     label {
       display: flex;
       align-items: center;
-      // span {
-      //   &.mensage {
-      //     width: 75px;
-      //   }
-      // }
+      span {
+        &.mensage {
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+    button {
+      padding: 2px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: white;
+      border: 1px solid black;
+      border-radius: 4px;
+      transition: 0.5s;
+      &:hover {
+        // background-color: #90defd;
+        font-size: 20px;
+        transform: scale(1.02);
+        box-shadow: 0 0 2px black;
+      }
+      &:active {
+        // background-color: #8cbfd3;
+        font-size: 16px;
+        transform: scale(0.95);
+        box-shadow: 0 0 4px black;
+        opacity: 0.9;
+      }
     }
   }
 }

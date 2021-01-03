@@ -10,17 +10,16 @@ export default function Settings() {
 	const { projectType, setProjectType } = useProjectType();
 	const { canvasWidth, setCanvasWidth } = useCanvasWidth();
 	const { canvasHeight, setCanvasHeight } = useCanvasHeight();
+	const { language, setLanguage } = useLanguage();
+
 	const { canvas } = useCanvasValues();
 
-	const { language, setLanguage } = useLanguage();
 	const { translation } = useTranslation();
 
 	const [mensage, setMensage] = useState(translation.Settings);
-
 	useEffect(() => {
 		setMensage(translation.Settings);
 	}, [translation]);
-
 
 	const [dataURLJPG, setDataURLJPG] = useState();
 	const [dataURLPNG, setDataURLPNG] = useState();
@@ -63,29 +62,32 @@ export default function Settings() {
 				</select>
 			</label>
 
-			<label htmlFor="width">{mensage.WidthInput}:
+			<label
+				htmlFor="width"
+				className="CanvasSize"
+			>
+				{mensage.Size.Label}:
 				<input
 					id="width"
 					name="Width"
 					type="number"
-					title="Paper Width"
-					placeholder="Paper Width"
+					title={mensage.Size.WidthInput.Title}
+					placeholder={mensage.Size.WidthInput.Placeholder}
 					value={canvasWidth}
 					onChange={(e) => setCanvasWidth(e.target.value)}
-				/> px
-				</label>
-
-			<label htmlFor="height">{mensage.HeightInput}:
+				/>
+				X
 				<input
 					id="height"
 					name="Height"
 					type="number"
-					title="Paper Height"
-					placeholder="Paper Height"
+					title={mensage.Size.HeightInput.Title}
+					placeholder={mensage.Size.HeightInput.Placeholder}
 					value={canvasHeight}
 					onChange={(e) => setCanvasHeight(e.target.value)}
-				/> px
-				</label>
+				/>
+			</label>
+
 
 			<label htmlFor="language">Language:
 				<select
@@ -101,15 +103,17 @@ export default function Settings() {
 			</label>
 
 			<div className="Export">
-				<h3>Export</h3>
+				<h3>{mensage.Export.Label}</h3>
 				<a
 					href={dataURLJPG}
+					title={mensage.Export.Label.jpg}
 					download={`${name}.jpg`}
 				>
 					{name}.jpg
 					</a>
 				<a
 					href={dataURLPNG}
+					title={mensage.Export.Label.png}
 					download={`${name}.png`}
 				>
 					{name}.png

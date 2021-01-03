@@ -11,19 +11,19 @@ export default function ProjectProvider({ children }) {
 	useEffect(() => {
 		if (!localStorage.getItem("lang")) {
 			localStorage.setItem("lang", "en");
+		} else {
+			setLanguage(localStorage.getItem("lang"));
 		}
-	});
+	}, []);
 
 	useEffect(() => {
 		localStorage.setItem("lang", language);
 		setTranslation(lang[language]);
 	}, [language]);
 
-	const [name, setName] = useState("Unnamed - Rupestre");
+	const [name, setName] = useState("Name");
 	const [projectType, setProjectType] = useState("draw");
 	const [modalTitle, setModalTitle] = useState("");
-
-	useEffect(() => { console.log(modalTitle); }, [modalTitle])
 
 	return (
 		<ProjectContext.Provider value={{

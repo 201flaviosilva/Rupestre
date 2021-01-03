@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "../../Context/ProjectOptions";
 import { useBrush } from "../../Context/BrushOptions";
 
-import lang from "../../Lang/Lang";
 
 import HideButton from "../HideButton/HideButton";
 import Pencil from "./Brush/Pencil";
@@ -32,7 +31,7 @@ export default function ToolBox() {
 	return (
 		<aside className="ToolBoxContainer">
 			<div className="ToolBoxHeader">
-				<h2>{mensage.ToolBox.Title} {mensage.Brushes[brush]}</h2>
+				<h2>{/* {mensage.ToolBox.Title} */}{mensage.Brushes[brush]}</h2>
 				<HideButton visible={visible} setVisible={setVisible} />
 			</div>
 

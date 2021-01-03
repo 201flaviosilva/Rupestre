@@ -7,7 +7,7 @@ export default function ColorsPickerList() {
 	const { setColor } = useColor();
 
 	return (
-		<div>
+		<div className="ColorsPickerList">
 			{colorsPicked.map((color, index) =>
 				<button
 					style={{ backgroundColor: color, textShadow: "0 0 2px white" }}

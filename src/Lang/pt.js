@@ -1,18 +1,32 @@
 const pt = {
-  "Settings": {
-    "Title": "Configurações",
-    "ProjectType": {
-      "Label": "Tipo de Projeto",
-      "Title": "Tipo de Projeto",
-      "Animation": "Animação",
-      "Comics": "Banda Desenhada",
-      "Draw": "Desenho",
-      "StoryBoard": "Story Board"
+  Settings: {
+    Title: "Configurações",
+    ProjectType: {
+      Label: "Tipo de Projeto",
+      Title: "Tipo de Projeto",
+      Animation: "Animação",
+      Comics: "Banda Desenhada",
+      Draw: "Desenho",
+      StoryBoard: "Story Board"
     },
-    "NameInput": "Nome do Projeto",
-    "WidthInput": "Largura",
-    "HeightInput": "Altura",
-    "Confirm": "Confirmar"
+    NameInput: "Nome do Projeto",
+    Size: {
+      Label: "Size",
+      WidthInput: {
+        Title: "Canvas Largura",
+        placeholder: "Largura",
+      },
+      HeightInput: {
+        Title: "Canvas Altura",
+        placeholder: "Altura",
+      },
+    },
+    Export: {
+      Label: "Exportar",
+      png: "Exportar como PNG",
+      jpg: "Exportar como JPG"
+    },
+    Confirm: "Confirmar"
   },
   "Brushes": {
     "Title": "Pinceis",

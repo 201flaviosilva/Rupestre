@@ -1,18 +1,32 @@
 const en = {
-  "Settings": {
-    "Title": "Settings",
-    "ProjectType": {
-      "Label": "Project Type",
-      "Title": "Project Type",
-      "Animation": "Animation",
-      "Comics": "Comics",
-      "Draw": "Draw",
-      "StoryBoard": "Story Board"
+  Settings: {
+    Title: "Settings",
+    NameInput: "Project Nome",
+    ProjectType: {
+      Label: "Project Type",
+      Title: "Project Type",
+      Animation: "Animation",
+      Comics: "Comics",
+      Draw: "Draw",
+      StoryBoard: "Story Board"
     },
-    "NameInput": "Project Nome",
-    "WidthInput": "Width",
-    "HeightInput": "Height",
-    "Confirm": "Confirm"
+    Size: {
+      Label: "Size",
+      WidthInput: {
+        Title: "Canvas Width",
+        placeholder: "Width",
+      },
+      HeightInput: {
+        Title: "Canvas Height",
+        placeholder: "Height",
+      },
+    },
+    Export: {
+      Label: "Export",
+      png: "Export as PNG",
+      jpg: "Export as JPG"
+    },
+    Confirm: "Confirm"
   },
   "Brushes": {
     "Title": "Brushes",
