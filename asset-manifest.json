@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Rupestre/static/css/main.00ffc1e1.chunk.css",
-    "main.js": "/Rupestre/static/js/main.b5837056.chunk.js",
-    "main.js.map": "/Rupestre/static/js/main.b5837056.chunk.js.map",
+    "main.css": "/Rupestre/static/css/main.002286ff.chunk.css",
+    "main.js": "/Rupestre/static/js/main.5d779bd4.chunk.js",
+    "main.js.map": "/Rupestre/static/js/main.5d779bd4.chunk.js.map",
     "runtime-main.js": "/Rupestre/static/js/runtime-main.85914bf1.js",
     "runtime-main.js.map": "/Rupestre/static/js/runtime-main.85914bf1.js.map",
     "static/js/2.08963818.chunk.js": "/Rupestre/static/js/2.08963818.chunk.js",
     "static/js/2.08963818.chunk.js.map": "/Rupestre/static/js/2.08963818.chunk.js.map",
     "index.html": "/Rupestre/index.html",
-    "static/css/main.00ffc1e1.chunk.css.map": "/Rupestre/static/css/main.00ffc1e1.chunk.css.map",
+    "static/css/main.002286ff.chunk.css.map": "/Rupestre/static/css/main.002286ff.chunk.css.map",
     "static/js/2.08963818.chunk.js.LICENSE.txt": "/Rupestre/static/js/2.08963818.chunk.js.LICENSE.txt",
     "static/media/ArrowDown.1eca03ef.svg": "/Rupestre/static/media/ArrowDown.1eca03ef.svg",
     "static/media/ArrowLeft.8edfe59d.svg": "/Rupestre/static/media/ArrowLeft.8edfe59d.svg",
@@ -27,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.85914bf1.js",
     "static/js/2.08963818.chunk.js",
-    "static/css/main.00ffc1e1.chunk.css",
-    "static/js/main.b5837056.chunk.js"
+    "static/css/main.002286ff.chunk.css",
+    "static/js/main.5d779bd4.chunk.js"
   ]
 }
