@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-import lang from "../Lang/Lang";
+import lang from "../Managers/Lang";
 
 const ProjectContext = createContext();
 
