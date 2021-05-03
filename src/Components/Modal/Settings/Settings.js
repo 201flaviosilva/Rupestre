@@ -74,7 +74,7 @@ export default function Settings() {
 					title={mensage.Size.WidthInput.Title}
 					placeholder={mensage.Size.WidthInput.Placeholder}
 					value={canvasWidth}
-					onChange={(e) => setCanvasWidth(e.target.value)}
+					onChange={e => setCanvasWidth(e.target.value)}
 				/>
 				X
 				<input
@@ -84,7 +84,7 @@ export default function Settings() {
 					title={mensage.Size.HeightInput.Title}
 					placeholder={mensage.Size.HeightInput.Placeholder}
 					value={canvasHeight}
-					onChange={(e) => setCanvasHeight(e.target.value)}
+					onChange={e => setCanvasHeight(e.target.value)}
 				/>
 			</label>
 

@@ -1,5 +1,8 @@
+# ---- Manual
 Beep/
+ignore/
 
+# ---- Auto
 # Logs
 logs
 *.log

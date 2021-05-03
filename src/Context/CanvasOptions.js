@@ -1,10 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CanvasContext = createContext();
 
 export default function CanvasProvider({ children }) {
 	const [canvas, setCanvas] = useState(null);
-	const [ctx, setCtx] = useState(null);
 
 	const [canvasWidth, setCanvasWidth] = useState(500);
 	const [canvasHeight, setCanvasHeight] = useState(500);
@@ -12,7 +11,6 @@ export default function CanvasProvider({ children }) {
 	return (
 		<CanvasContext.Provider value={{
 			canvas, setCanvas,
-			ctx, setCtx,
 			canvasWidth, setCanvasWidth,
 			canvasHeight, setCanvasHeight,
 		}}>
@@ -25,12 +23,6 @@ export function useCanvas() {
 	const context = useContext(CanvasContext);
 	const { canvas, setCanvas } = context;
 	return { canvas, setCanvas };
-};
-
-export function useCtx() {
-	const context = useContext(CanvasContext);
-	const { ctx, setCtx } = context;
-	return { ctx, setCtx };
 };
 
 export function useCanvasWidth() {
@@ -47,6 +39,6 @@ export function useCanvasHeight() {
 
 export function useCanvasValues() {
 	const context = useContext(CanvasContext);
-	const { canvas, ctx, canvasWidth, canvasHeight } = context;
-	return { canvas, ctx, canvasWidth, canvasHeight };
+	const { canvas, canvasWidth, canvasHeight } = context;
+	return { canvas, canvasWidth, canvasHeight };
 }

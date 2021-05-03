@@ -1,153 +1,43 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { fabric } from 'fabric';
 
-import { useCanvas, useCtx, useCanvasValues } from "../../Context/CanvasOptions";
-import { useBrushValues, useColorsPicked } from "../../Context/BrushOptions";
-
-import Pencil from "./BrushesFunctions/Pencil";
-import Eraser from "./BrushesFunctions/Eraser";
-import PaintBucket from "./BrushesFunctions/PaintBucket";
-import ColorPicker from "./BrushesFunctions/ColorPicker";
-import VirtualCanvas from "./BrushesFunctions/VirtualCanvas";
-// import Line from "./BrushesFunctions/Line";
-// import Rectangle from "./BrushesFunctions/Rectangle";
-import Text from "./BrushesFunctions/Text";
+import { useCanvas, useCanvasValues } from "../../Context/CanvasOptions";
+import { useBrushValues } from "../../Context/BrushOptions";
 
 import "./style.css";
 
 export default function Canvas() {
+	const { canvas, setCanvas } = useCanvas();
 	const { canvasWidth, canvasHeight } = useCanvasValues();
 	const { brush, color, size, format, colorTolerance, paintFill, text, fontFamily } = useBrushValues();
-	const { colorsPicked, setColorsPicked } = useColorsPicked();
-
-	const canvasRef = useRef(null);
-	const { canvas, setCanvas } = useCanvas();
-	const { ctx, setCtx } = useCtx();
 
 	useEffect(() => {
-		const c = canvasRef.current;
-		const context = c.getContext("2d");
+		if (canvas) return;
+
+		const c = new fabric.Canvas("canvas", {
+			height: canvasWidth,
+			width: canvasHeight,
+			backgroundColor: "white",
+			isDrawingMode: true,
+		});
 		setCanvas(c);
-		setCtx(context);
-		if (c && context) paintBgCanvas(c, context);
-	}, []);
-
-	function paintBgCanvas(c, context) {
-		const position = { x: 1, y: 1 };
-		const brushOpt = { color: "#ffffff", colorTolerance };
-		PaintBucket(c, context, position, brushOpt);
-	};
-
-	const [mouseDown, setMouseDown] = useState(false);
-
-	const [lastPositionX, setLastPositionX] = useState(null);
-	const [lastPositionY, setLastPositionY] = useState(null);
-
-	const [positionX, setPositionX] = useState(null);
-	const [positionY, setPositionY] = useState(null);
-
-	const [startX, setStartX] = useState(null);
-	const [startY, setStartY] = useState(null);
-
-	function getMousePos(evt) {
-		//Get Mouse Position
-		const { top, left } = canvas.getBoundingClientRect();
-
-		const canvasPX = evt.clientX - left;
-		const canvasPY = evt.clientY - top;
-
-		if (!(startX && startY) && mouseDown) {
-			setStartX(canvasPX);
-			setStartY(canvasPY);
-		}
-
-		setLastPositionX(positionX);
-		setLastPositionY(positionY);
-
-		setPositionX(canvasPX);
-		setPositionY(canvasPY);
-	};
+	}, [canvas, canvasHeight, canvasWidth, setCanvas]);
 
 	useEffect(() => {
-		if (positionX && positionY) {
-			const position = {
-				last: {
-					x: lastPositionX,
-					y: lastPositionY
-				},
-				actual: {
-					x: positionX - (size / 2),
-					y: positionY - (size / 2)
-				},
-				real: {
-					x: positionX,
-					y: positionY
-				},
-				start: {
-					x: startX,
-					y: startY
-				}
-			};
-			paintBrush(position);
-		};
-	}, [positionX, positionY]);
+		if (!canvas || !(canvasWidth > 0) || !(canvasHeight > 0)) return;
 
-	function paintBrush(position) {
-		// console.log(position.start);
-		switch (brush) {
-			case "Pencil":
-				Pencil(ctx, position, { color, size, format });
-				break;
-			case "Eraser":
-				Eraser(ctx, position.actual, size);
-				break;
-			case "PaintBucket":
-				PaintBucket(canvas, ctx, position.real, { color, colorTolerance });
-				break;
-			case "ColorPicker":
-				ColorPicker(canvas, position.real, { colorsPicked, setColorsPicked });
-				break;
-			case "Line":
-				if (mouseDown) VirtualCanvas(canvas, ctx, position.start, { color, size, brush });
-				break;
-			case "Rectangle":
-				if (mouseDown) VirtualCanvas(canvas, ctx, position.start, { color, size, paintFill, brush });
-				break;
-			case "Circle":
-				if (mouseDown) VirtualCanvas(canvas, ctx, position.start, { color, size, paintFill, brush });
-				break;
-			case "Text":
-				Text(ctx, position.real, { color, size, text, fontFamily });
-				break;
-			default:
-				break;
-		}
-	};
+		canvas.setDimensions({ width: canvasWidth, height: canvasHeight });
 
-	function leaveCanvas() {
-		setMouseDown(false);
+	}, [canvasWidth, canvasHeight, canvas]);
 
-		setLastPositionX(null);
-		setLastPositionY(null);
+	useEffect(() => {
+		if (!canvas) return;
 
-		setPositionX(null);
-		setPositionY(null);
+		canvas.isDrawingMode = brush === "Pencil";
+		canvas.freeDrawingBrush.color = color;
+		canvas.freeDrawingBrush.width = size;
 
-		setStartX(null);
-		setStartY(null);
-	};
+	}, [canvas, brush, color, size]);
 
-	return (
-		<>
-			<canvas
-				width={canvasWidth}
-				height={canvasHeight}
-				ref={canvasRef}
-				onClick={(evt) => getMousePos(evt)}
-				onMouseDown={() => setMouseDown(true)}
-				onMouseUp={leaveCanvas}
-				onMouseOut={leaveCanvas}
-				onMouseMove={(evt) => mouseDown && getMousePos(evt)}
-			/>
-		</>
-	)
+	return <canvas id="canvas"></canvas>;
 }
